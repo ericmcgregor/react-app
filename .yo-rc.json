@@ -1,0 +1,12 @@
+{
+  "generator-angular-meteor": {
+    "filters": {
+      "js": true,
+      "html": true,
+      "stylus": true,
+      "pagination": true,
+      "bower": true,
+      "auth": true
+    }
+  }
+}
