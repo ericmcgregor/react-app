@@ -1,3 +1,6 @@
+Meteor.subscribe('testCard')
+Meteor.subscribe('learnings')
+Meteor.subscribe('hypothesis')
 // App component - represents the whole app
 App = React.createClass({
 
@@ -20,13 +23,17 @@ App = React.createClass({
     });
   },
 
+  addProject() {
+    Meteor.call('createProject', 'new project!');
+  },
+
   render() {
     return (
       <div className="container">
         <header>
           <h1>Todo List</h1>
         </header>
-
+        <button onClick={this.addProject}> add project</button>
         <ul>
           {this.renderProjects()}
         </ul>
