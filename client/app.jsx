@@ -1,6 +1,30 @@
 Meteor.subscribe('testCard')
 Meteor.subscribe('learnings')
 Meteor.subscribe('hypothesis')
+
+AppLayout = React.createClass({
+
+  render() {
+    return (
+      <div class="layout layout-row layout-fill">
+
+          <div class="flex-25">
+            <nav class="navbar navbar-light bg-faded">
+              <a class="navbar-brand" href="#">Projects</a>
+            </nav>
+            <div id="nav-menu-target"></div>
+          </div>
+
+          <div class="flex">
+            <div id="render-target"></div>
+          </div>
+
+      </div>
+    );
+  }
+
+})
+
 // App component - represents the whole app
 App = React.createClass({
 
@@ -10,17 +34,19 @@ App = React.createClass({
   // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {
     Meteor.subscribe('projects')
-
     return {
-      projects: Projects.find({}).fetch()
+      project: Projects.findOne(FlowRouter.getParam('projectId'))
     }
   },
 
   renderProjects() {
     // Get tasks from this.data.tasks
-    return this.data.projects.map((project) => {
-      return <ProjectRow key={project._id} project={project} />;
-    });
+      if(!this.data.project ){
+        return;
+      }
+
+      return <ProjectRow key={this.data.project._id} project={this.data.project} />;
+
   },
 
   addProject() {
@@ -28,12 +54,18 @@ App = React.createClass({
   },
 
   render() {
-    return (
-      <div className="container">
-        <header>
-          <h1>Todo List</h1>
-        </header>
-        <button onClick={this.addProject}> add project</button>
+    let project = this.data.project;
+    if(!project) {
+      project = {}
+    }
+    return (<div>
+        <nav className="navbar navbar-light bg-faded">
+          <a className="navbar-brand" href="#">{project.name}</a>
+          <form className="form-inline navbar-form pull-right">
+            <input className="form-control" type="text" placeholder="Search" />
+            <button className="btn btn-success-outline" type="submit">Search</button>
+          </form>
+        </nav>
         <ul>
           {this.renderProjects()}
         </ul>
@@ -42,19 +74,9 @@ App = React.createClass({
   }
 });
 
-// Task component - represents a single todo item
-Task = React.createClass({
-  propTypes: {
-    // This component gets the task to display through a React prop.
-    // We can use propTypes to indicate it is required
-    task: React.PropTypes.object.isRequired
-  },
-  render() {
-    return (
-      <li>{this.props.task.name}</li>
-    );
-  }
-});
+
+
+
 
 if (Meteor.isClient) {
   // This code is executed on the client only
@@ -62,5 +84,6 @@ if (Meteor.isClient) {
   Meteor.startup(function () {
     // Use Meteor.startup to render the component after the page is ready
     React.render(<App />, document.getElementById("render-target"));
+    React.render(<NavMenu />, document.getElementById("nav-menu-target"));
   });
 }

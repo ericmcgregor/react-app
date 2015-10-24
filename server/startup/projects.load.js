@@ -8,9 +8,9 @@ Meteor.startup(function() {
     //     'name': 'project 2'
     //   }
     // ];
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 2; i++) {
       let id = Meteor.call('createProject', faker.company.companyName());
-      for (x = 0; x < 10; x++) {
+      for (x = 0; x < 1; x++) {
         Meteor.call('createHypothesis', id, faker.lorem.sentence());
       }
     }
