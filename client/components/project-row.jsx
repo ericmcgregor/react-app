@@ -18,22 +18,14 @@ ProjectRow = React.createClass({
     }
   },
 
-  createHypothesis() {
-    Meteor.call('createHypothesis', this.props.project._id, 'a cool new hypothesis')
-  },
-
 
   render() {
-    return <div>
-      <h4>{this.props.project.name}</h4>
-        <button onClick={this.createHypothesis}>create hypothesis</button>
-        <ul>
+    return <div className="p-a">
         {
           this.data.hypothesis.map(function(hypothesis){
             return <HypothesisRow key={hypothesis._id} hypothesis={hypothesis} />;
           })
         }
-        </ul>
     </div>
 
   }

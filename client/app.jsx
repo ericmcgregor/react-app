@@ -1,80 +1,62 @@
 Meteor.subscribe('testCard')
 Meteor.subscribe('learnings')
 Meteor.subscribe('hypothesis')
+Meteor.subscribe('projects');
+Meteor.subscribe('people');
 
-AppLayout = React.createClass({
-
-  render() {
-    return (
-      <div class="layout layout-row layout-fill">
-
-          <div class="flex-25">
-            <nav class="navbar navbar-light bg-faded">
-              <a class="navbar-brand" href="#">Projects</a>
-            </nav>
-            <div id="nav-menu-target"></div>
-          </div>
-
-          <div class="flex">
-            <div id="render-target"></div>
-          </div>
-
-      </div>
-    );
-  }
-
-})
 
 // App component - represents the whole app
 App = React.createClass({
+  getInitialState () {
+      return {
+        text: '',
+        editing: true
+      }
+    },
 
   // This mixin makes the getMeteorData method work
   mixins: [ReactMeteorData],
 
   // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {
-    Meteor.subscribe('projects')
+    let projectId = FlowRouter.getParam('projectId');
     return {
-      project: Projects.findOne(FlowRouter.getParam('projectId'))
+      project: Projects.findOne(projectId)
     }
   },
 
-  renderProjects() {
-    // Get tasks from this.data.tasks
-      if(!this.data.project ){
-        return;
-      }
 
-      return <ProjectRow key={this.data.project._id} project={this.data.project} />;
-
+  createHypothesis() {
+    Meteor.call('createHypothesis', this.data.project._id);
   },
 
-  addProject() {
-    Meteor.call('createProject', 'new project!');
+  renderContent() {
+    return <div>
+      <nav className="navbar navbar-light bg-faded">
+        <a className="navbar-brand" href="#">{this.data.project.name}</a>
+          <div className="dropdown pull-right">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Options
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <a className="dropdown-item" href="#" onClick={this.createHypothesis}>Add hypothesis</a>
+              <a className="dropdown-item" href="#">Another action</a>
+              <a className="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+      </nav>
+      <ProjectRow key={this.data.project._id} project={this.data.project} />
+    </div>
   },
 
   render() {
-    let project = this.data.project;
-    if(!project) {
-      project = {}
-    }
-    return (<div>
-        <nav className="navbar navbar-light bg-faded">
-          <a className="navbar-brand" href="#">{project.name}</a>
-          <form className="form-inline navbar-form pull-right">
-            <input className="form-control" type="text" placeholder="Search" />
-            <button className="btn btn-success-outline" type="submit">Search</button>
-          </form>
-        </nav>
-        <ul>
-          {this.renderProjects()}
-        </ul>
+    return (
+      <div>
+        {this.data.project? this.renderContent() : <p>Loading...</p>}
       </div>
     );
   }
 });
-
-
 
 
 
@@ -87,3 +69,31 @@ if (Meteor.isClient) {
     React.render(<NavMenu />, document.getElementById("nav-menu-target"));
   });
 }
+
+
+
+
+
+
+// AppLayout = React.createClass({
+//
+//   render() {
+//     return (
+//       <div class="layout layout-row layout-fill">
+//
+//           <div class="flex-25">
+//             <nav class="navbar navbar-light bg-faded">
+//               <a class="navbar-brand" href="#">Projects</a>
+//             </nav>
+//             <NavMenu />
+//           </div>
+//
+//           <div class="flex">
+//             <App />
+//           </div>
+//
+//       </div>
+//     );
+//   }
+//
+// })

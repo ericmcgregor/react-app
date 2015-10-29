@@ -10,7 +10,23 @@
   //       React.render(<App />, document.getElementById("render-target"));
   //     }
   // });
-  FlowRouter.route('/projects/:projectId', {
-    action(params) {
-    }
-  });
+FlowRouter.route('/', {
+  action(params) {
+  }
+});
+
+let projectRoutes = FlowRouter.group({
+  prefix: "/projects"
+});
+
+projectRoutes.route('/', {
+  name:'projects-list',
+  action:function(){
+  }
+})
+projectRoutes.route('/:projectId', {
+  name:'project-details',
+  action:function(params){
+
+  }
+})
