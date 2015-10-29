@@ -3,10 +3,9 @@ ProjectRow = React.createClass({
   propTypes: {
     project: React.PropTypes.object.isRequired
   },
-  // This mixin makes the getMeteorData method work
+
   mixins: [ReactMeteorData],
 
-  // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {
 
     return {
@@ -17,7 +16,6 @@ ProjectRow = React.createClass({
       }).fetch(),
     }
   },
-
 
   render() {
     return <div className="p-a">

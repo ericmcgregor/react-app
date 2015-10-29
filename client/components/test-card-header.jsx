@@ -19,7 +19,7 @@ TestCardHeader = React.createClass({
     }
   },
 
-  handleChange(key, evt) {
+  handleChange(key, value, evt) {
     this.state.testCard[key] = evt.target.value
     this.setState(this.state);
 
@@ -29,26 +29,15 @@ TestCardHeader = React.createClass({
       $set:_.pick(this.state.testCard, key)
     });
   },
-  toggleEdit() {
-    this.setState({
-      edit:!this.state.edit
-    })
-  },
-  componentDidUpdate() {
-    let node = React.findDOMNode(this.refs.editName)
-    node ? node.focus() : null;
-  },
-  renderEdit() {
-    return  <fieldset className="form-group" onBlur={this.toggleEdit}>
-      <input ref="editName" className="form-control" value={this.state.testCard.name} onChange={this.handleChange.bind(this, 'name')}/>
-    </fieldset>
-  },
-  renderTitle() {
-    return <h5 onClick={this.toggleEdit}>Test: {this.state.testCard.name}</h5>
-  },
+
+  // componentDidUpdate() {
+  //   let node = React.findDOMNode(this.refs.editName)
+  //   node ? node.focus() : null;
+  // },
+
   render() {
     return <div>
-      {this.state.edit ? this.renderEdit() : this.renderTitle()}
+      <EditTitleMixin title={this.props.testCard.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
 
       <div className="media">
         <a className="media-left" href="#">

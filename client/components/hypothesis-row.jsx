@@ -1,32 +1,8 @@
-EditTitleMixin = {
-  componentWillMount() {
-    this.setState({
-      edit:false
-    })
-  },
-  toggleEdit() {
-    this.setState({
-      edit:!this.state.edit
-    })
-  },
-  handleChange() {
-
-  },
-  renderEdit(target) {
-    return  <fieldset className="form-group" onBlur={this.toggleEdit}>
-      <input ref="editName" className="form-control" value={target} onChange={this.handleChange}/>
-    </fieldset>
-  },
-  renderTitle() {
-    return <h5 onClick={this.toggleEdit}>Test</h5>
-  },
-}
-
 HypothesisRow = React.createClass({
   propTypes: {
     hypothesis: React.PropTypes.object.isRequired
   },
-  mixins: [ReactMeteorData, EditTitleMixin],
+  mixins: [ReactMeteorData],
 
   // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {
@@ -46,15 +22,25 @@ HypothesisRow = React.createClass({
     Meteor.call('createTestCard', this.props.hypothesis._id);
   },
 
+  handleChange(key, value, evt) {
+    let state = {}
+    state[key] = value ? value : evt.target.value;
+
+    Hypothesis.update({
+      _id:this.props.hypothesis._id
+    }, {
+      $set:state
+    });
+  },
+
   render() {
     let hypothesi = this.props.hypothesis;
-
+    // let 
     return <div>
 
       <div className="card">
         <div className="card-block">
-          <h4 className="card-title">{hypothesi.name}</h4>
-          {this.state.edit ? this.renderEdit(hypothesi.name) : this.renderTitle()}
+          <EditTitleMixin title={hypothesi.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
           <a href="#" className="card-link" onClick={this.removeHypothesis}>Remove</a>
           <a href="#" className="card-link" onClick={this.createTestCard}>create test card</a>
         </div>
