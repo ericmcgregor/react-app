@@ -30,10 +30,22 @@ App = React.createClass({
     Meteor.call('createHypothesis', this.data.project._id);
   },
 
+  handleChange(key, value, evt) {
+    let state = {}
+    state[key] = value ? value : evt.target.value;
+
+    Projects.update({
+      _id:this.data.project._id
+    }, {
+      $set:state
+    });
+  },
+
   renderContent() {
+
     return <div>
       <nav className="navbar navbar-light bg-faded">
-        <a className="navbar-brand" href="#">{this.data.project.name}</a>
+          <EditNavTitleMixin title={this.data.project.name} handleChange={this.handleChange.bind(this, 'name', null)} />
           <div className="dropdown pull-right">
             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Options
@@ -45,6 +57,7 @@ App = React.createClass({
             </div>
           </div>
       </nav>
+
       <ProjectRow key={this.data.project._id} project={this.data.project} />
     </div>
   },

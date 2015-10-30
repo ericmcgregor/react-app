@@ -35,12 +35,12 @@ HypothesisRow = React.createClass({
 
   render() {
     let hypothesi = this.props.hypothesis;
-    // let 
+    // let
     return <div>
 
       <div className="card">
         <div className="card-block">
-          <EditTitleMixin title={hypothesi.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
+          <EditHypothesisTitle title={hypothesi.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
           <a href="#" className="card-link" onClick={this.removeHypothesis}>Remove</a>
           <a href="#" className="card-link" onClick={this.createTestCard}>create test card</a>
         </div>

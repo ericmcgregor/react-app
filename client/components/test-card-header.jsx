@@ -37,7 +37,7 @@ TestCardHeader = React.createClass({
 
   render() {
     return <div>
-      <EditTitleMixin title={this.props.testCard.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
+      <EditTestTitle title={this.props.testCard.name} handleChange={this.handleChange.bind(this, 'name', null)} />
 
       <div className="media">
         <a className="media-left" href="#">
