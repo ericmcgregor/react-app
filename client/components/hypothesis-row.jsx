@@ -7,11 +7,7 @@ HypothesisRow = React.createClass({
   // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {
     return {
-      TestCards: TestCard.find({hypothesiId:this.props.hypothesis._id}, {
-        sort:{
-          '_id':1
-        }
-      }).fetch()
+      TestCards: TestCard.find({hypothesiId:this.props.hypothesis._id}).fetch()
     }
   },
 
@@ -40,32 +36,26 @@ HypothesisRow = React.createClass({
 
       <div className="card">
         <div className="card-block">
-          <EditHypothesisTitle title={hypothesi.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
-          <a href="#" className="card-link" onClick={this.removeHypothesis}>Remove</a>
-          <a href="#" className="card-link" onClick={this.createTestCard}>create test card</a>
+          <div className="row">
+            <div className="col-xs-8">
+              <EditHypothesisTitle title={hypothesi.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
+            </div>
+            <div className="col-xs-4">
+              <a href="#" className="card-link pull-right m-l" onClick={this.removeHypothesis}>Remove</a>
+              <a href="#" className="card-link pull-right" onClick={this.createTestCard}>create test card</a>
+            </div>
+          </div>
         </div>
+
         <div className="card-block">
           {this.data.TestCards.map(function(testCard){
             return <TestCardRow key={testCard._id} testCard={testCard} />
           })}
-
         </div>
+
       </div>
 
     </div>
   }
 
 })
-
-
-      //
-      // <p>{hypothesi.name} - {hypothesi._id}</p>
-      // <p onClick={this.removeHypothesis}>delete</p>
-      // <p onClick={this.createTestCard}>create test card</p>
-      // <table className="table">
-      // <tbody>
-      // {this.data.TestCards.map(function(testCard){
-      //   return <TestCardRow key={testCard._id} testCard={testCard} />
-      // })}
-      // </tbody>
-      // </table>

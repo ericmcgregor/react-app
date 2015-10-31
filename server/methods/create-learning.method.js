@@ -8,9 +8,9 @@ Meteor.methods({
             'testCardId':testCard._id,
             'hypothesiId':testCard.hypothesiId,
             'hypothesis':testCard.hypothesis,
-            'observation':'we observed...',
-            'learning':'unclear results...',
-            'next_steps':'continue on...',
+            'observation':'', //we observed...
+            'learning':'', //unclear results...
+            'next_steps':'', //continue on...
             'result':''
           }
 

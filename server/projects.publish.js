@@ -1,8 +1,13 @@
 'use strict'
 
-Meteor.publish('projects', function(options, searchString) {
+Meteor.publish('projects', function(options={}, searchString) {
   if(!searchString) {
     searchString = '';
+  }
+  if(!options.sort) {
+    options.sort= {
+        date_created: -1
+      }
   }
   Counts.publish(this, 'numberOfProjects', Projects.find({
     'name': {

@@ -40,6 +40,7 @@ LearningCard = React.createClass({
             <textarea className="form-control" rows="3" value={this.props.learningCard.next_steps} onChange={this.handleChange.bind(this, 'next_steps', null)}></textarea>
           </fieldset>
         </div>
+        <LearningCardResultSelect learning={this.props.learningCard} />
       </div>
     )
   }

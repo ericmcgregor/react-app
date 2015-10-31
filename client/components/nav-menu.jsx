@@ -5,13 +5,8 @@ NavMenu = React.createClass({
 
   // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {
-
     return {
-      projects: Projects.find({}, {
-        sort:{
-          '_id':1
-        }
-      }).fetch(),
+      projects: Projects.find().fetch(),
     }
   },
 
@@ -28,9 +23,7 @@ NavMenu = React.createClass({
     return <div>
     <ul className="list-group">
       {this.data.projects.map((project)=>{
-        return <li key={project._id} className="list-group-item">
-          <a href={'/projects/'+project._id}>{project.name}</a>
-        </li>
+        return <NavMenuItem key={project._id} project={project} />
       })}
     </ul>
     <button className="btn btn-success-outline btn-block" onClick={this.createProject}>create project</button>
@@ -39,6 +32,32 @@ NavMenu = React.createClass({
 
   }
 });
+NavMenuItem = React.createClass({
+  getInitialState() {
+    return {
+      toggleRemove:false
+    }
+  },
+  removeProject() {
+    Projects.remove(this.props.project._id);
+  },
+  toggleRemove(){
+    this.setState({
+      toggleRemove:!this.state.toggleRemove
+    });
+  },
 
+  render() {
+    let project = this.props.project;
+    return (
+      <li key={project._id} className="list-group-item hover-remove">
+        <span className="label label-default label-pill pull-right" onClick={this.removeProject}>x</span>
+        <a href={'/projects/'+project._id}>
+          {project.name}
+        </a>
+      </li>
+    )
+  }
+})
 //<span className="label label-default label-pill pull-right">14</span>
 // href={'/projects/'+project._id}

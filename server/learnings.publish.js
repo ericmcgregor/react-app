@@ -1,8 +1,13 @@
 'use strict'
 
-Meteor.publish('learnings', function(options, searchString) {
+Meteor.publish('learnings', function(options={}, searchString) {
   if(!searchString) {
     searchString = '';
+  }
+  if(!options.sort) {
+    options.sort= {
+        date_created: -1
+      }
   }
   Counts.publish(this, 'numberOfLearnings', Learnings.find({
     '_id': {

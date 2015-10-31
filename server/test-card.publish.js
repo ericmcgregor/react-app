@@ -1,8 +1,13 @@
 'use strict'
 
-Meteor.publish('testCard', function(options, searchString) {
+Meteor.publish('testCard', function(options={}, searchString) {
   if(!searchString) {
     searchString = '';
+  }
+  if(!options.sort) {
+    options.sort= {
+        date_created: -1
+      }
   }
   Counts.publish(this, 'numberOfTestCard', TestCard.find({
     'name': {

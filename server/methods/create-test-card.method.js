@@ -13,9 +13,9 @@ Meteor.methods({
             'deadline':'date',
             'duration':'time',
             'hypothesis':hypothesi.name,
-            'test':'to very this we will...',
-            'metric':'to verify that we will...',
-            'criteria':'we are right if...',
+            'test':'', //to very this we will...
+            'metric':'', //to verify that we will...
+            'criteria':'', //we are right if...
             'state':'backlog',
             'expanded':true
           }

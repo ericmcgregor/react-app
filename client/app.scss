@@ -29,3 +29,16 @@ html, body {
   overflow:hidden;
   border:1px solid black;
 }
+
+.list-group-item {
+  &.hover-remove {
+    span.label {
+      display:none;
+    }
+    &:hover {
+      span.label {
+        display:block;
+      }
+    }
+  }
+}

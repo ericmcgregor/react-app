@@ -7,12 +7,6 @@ Meteor.subscribe('people');
 
 // App component - represents the whole app
 App = React.createClass({
-  getInitialState () {
-      return {
-        text: '',
-        editing: true
-      }
-    },
 
   // This mixin makes the getMeteorData method work
   mixins: [ReactMeteorData],
@@ -26,42 +20,8 @@ App = React.createClass({
   },
 
 
-  createHypothesis() {
-    Meteor.call('createHypothesis', this.data.project._id);
-  },
-
-  handleChange(key, value, evt) {
-    let state = {}
-    state[key] = value ? value : evt.target.value;
-
-    Projects.update({
-      _id:this.data.project._id
-    }, {
-      $set:state
-    });
-  },
-  removeProject() {
-    Projects.remove(FlowRouter.getParam('projectId'));
-  },
   renderContent() {
-
-    return <div>
-      <nav className="navbar navbar-light bg-faded">
-          <EditNavTitleMixin title={this.data.project.name} handleChange={this.handleChange.bind(this, 'name', null)} />
-          <div className="dropdown pull-right">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Options
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <a className="dropdown-item" href="#" onClick={this.createHypothesis}>Add hypothesis</a>
-              <a className="dropdown-item" href="#" onClick={this.removeProject}>Remove Project</a>
-              <a className="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-      </nav>
-
-      <ProjectRow key={this.data.project._id} project={this.data.project} />
-    </div>
+    return <ProjectRow key={this.data.project._id} project={this.data.project} />
   },
 
   render() {
@@ -84,31 +44,3 @@ if (Meteor.isClient) {
     React.render(<NavMenu />, document.getElementById("nav-menu-target"));
   });
 }
-
-
-
-
-
-
-// AppLayout = React.createClass({
-//
-//   render() {
-//     return (
-//       <div class="layout layout-row layout-fill">
-//
-//           <div class="flex-25">
-//             <nav class="navbar navbar-light bg-faded">
-//               <a class="navbar-brand" href="#">Projects</a>
-//             </nav>
-//             <NavMenu />
-//           </div>
-//
-//           <div class="flex">
-//             <App />
-//           </div>
-//
-//       </div>
-//     );
-//   }
-//
-// })
