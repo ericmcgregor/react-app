@@ -22,15 +22,25 @@ TestCardComponent = React.createClass({
   render() {
     return (
       <div>
-        <h6 className="text-muted">We will verify this by...</h6>
-        <fieldset className="form-group">
-          <textarea className="form-control"  rows="3" value={this.props.testCard.metric} onChange={this.handleChange.bind(this, 'metric', null)}></textarea>
-        </fieldset>
-        <div className="btn-group input-group btn-group-justified" role="group" aria-label="Basic example">
-          <button type="button" onClick={this.handleChange.bind(this, 'state', 'backlog')} className={this.props.testCard.state=="backlog" ? this.state.active : this.state.inactive }>backlog</button>
-          <button type="button"  onClick={this.handleChange.bind(this, 'state', 'build')} className={this.props.testCard.state=="build" ? this.state.active : this.state.inactive }>build</button>
-          <button type="button"  onClick={this.handleChange.bind(this, 'state', 'measure')} className={this.props.testCard.state=="measure" ? this.state.active : this.state.inactive }>measure</button>
+        <div>
+          <h6 className="text-muted">We will verify this by:</h6>
+          <fieldset className="form-group">
+            <textarea className="form-control"  rows="3" value={this.props.testCard.test} onChange={this.handleChange.bind(this, 'test', null)}></textarea>
+          </fieldset>
         </div>
+        <div>
+          <h6 className="text-muted">We will measure:</h6>
+          <fieldset className="form-group">
+            <textarea className="form-control"  rows="3" value={this.props.testCard.metric} onChange={this.handleChange.bind(this, 'metric', null)}></textarea>
+          </fieldset>
+        </div>
+        <div>
+          <h6 className="text-muted">We are right if:</h6>
+          <fieldset className="form-group">
+            <textarea className="form-control"  rows="3" value={this.props.testCard.criteria} onChange={this.handleChange.bind(this, 'criteria', null)}></textarea>
+          </fieldset>
+        </div>
+        <TestCardStateSelect testCard={this.props.testCard} />
       </div>
     )
   }

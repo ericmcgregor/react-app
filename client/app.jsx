@@ -40,7 +40,9 @@ App = React.createClass({
       $set:state
     });
   },
-
+  removeProject() {
+    Projects.remove(FlowRouter.getParam('projectId'));
+  },
   renderContent() {
 
     return <div>
@@ -52,7 +54,7 @@ App = React.createClass({
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu1">
               <a className="dropdown-item" href="#" onClick={this.createHypothesis}>Add hypothesis</a>
-              <a className="dropdown-item" href="#">Another action</a>
+              <a className="dropdown-item" href="#" onClick={this.removeProject}>Remove Project</a>
               <a className="dropdown-item" href="#">Something else here</a>
             </div>
           </div>
