@@ -12,7 +12,7 @@ Meteor.methods({
 
       let hypothesiId = Hypothesis.insert(hypothesi);
 
-      Meteor.call('createTestCard', hypothesiId)
+      // Meteor.call('createTestCard', hypothesiId)
 
       return hypothesiId;
 

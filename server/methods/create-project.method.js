@@ -5,7 +5,7 @@ Meteor.methods({
 
     let projectId = Projects.insert({name:name});
 
-    Meteor.call('createHypothesis', projectId);
+    // Meteor.call('createHypothesis', projectId);
 
     return projectId;
   },

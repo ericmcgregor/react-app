@@ -38,14 +38,12 @@ ProjectRow = React.createClass({
     <div>
       <nav className="navbar">
         <EditNavTitleMixin title={this.props.project.name} handleChange={this.handleChangeNavTitle.bind(this, 'name', null)} />
-          <form className="form-inline navbar-form pull-right">
-            <div className="btn-group pull-right btn-group-sm" role="group" aria-label="Third group">
+        <form className="form-inline navbar-form pull-right">
+            <div className="btn-group pull-right btn-group" role="group" aria-label="Third group">
               <button type="button" className="btn btn-secondary"><i className="fa fa-trash-o"></i></button>
             </div>
           </form>
       </nav>
-
-      <AddHypothesisForm project={this.props.project} />
 
       <div className="p-a">
           {
@@ -55,6 +53,11 @@ ProjectRow = React.createClass({
           }
       </div>
 
+
+            <div className="p-x"><hr /></div>
+
+              <AddHypothesisForm project={this.props.project} />
+              
     </div>
   )
 },
@@ -88,16 +91,17 @@ AddHypothesisForm = React.createClass({
 
   render(){
     return (
-    <div className="container-fluid">
+    <div className="container-fluid p-y">
       <div className="row">
         <div className="col-md-6">
           <div className="form-group">
-            <label className="sr-only">Hypothesis</label>
+            <label className="sr-only" >Hypothesis</label>
             <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your hypothesis" />
           </div>
+
         </div>
         <div className="col-md-1">
-          <button type="submit" className="btn btn-primary-outline btn-block" onClick={this.createHypothesis}>Add</button>
+          <button className="btn btn-primary-outline btn-block" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
         </div>
       </div>
     </div>

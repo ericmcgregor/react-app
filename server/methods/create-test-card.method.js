@@ -1,14 +1,14 @@
 'use strict';
 
 Meteor.methods({
-  createTestCard: function(hypothesiId) {
+  createTestCard: function(hypothesiId, name="new test") {
 
     let hypothesi = Hypothesis.findOne(hypothesiId);
 
       let testCard = {
             'projectId':hypothesi.projectId,
             'hypothesiId':hypothesiId,
-            'name':'test name 1',
+            'name':name,
             'assigned_to':{},
             'deadline':'date',
             'duration':'time',

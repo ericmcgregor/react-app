@@ -46,7 +46,13 @@ HypothesisRow = React.createClass({
             </div>
           </div>
         </div>
+        <div className="card-block">
 
+        {this.data.TestCards.length > 0 ? null : <AddTestCardForm hypothesis={this.props.hypothesis} />}
+
+
+
+        </div>
         <div className="card-block">
           {this.data.TestCards.map(function(testCard){
             return <TestCardRow key={testCard._id} testCard={testCard} />
@@ -58,4 +64,45 @@ HypothesisRow = React.createClass({
     </div>
   }
 
+})
+
+AddTestCardForm = React.createClass({
+  propTypes: {
+    hypothesis: React.PropTypes.object.isRequired
+  },
+  getInitialState() {
+    return {
+      name:''
+    }
+  },
+
+  createTestCard() {
+    Meteor.call('createTestCard', this.props.hypothesis._id, this.state.name);
+    this.setState({
+      name:''
+    })
+  },
+
+  handleChange(evt) {
+      this.setState({
+        name:evt.target.value
+      });
+  },
+
+  render(){
+    return (
+      <div className="row">
+        <div className="col-md-6">
+          <div className="form-group">
+            <label className="sr-only" >Test Card</label>
+            <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your Test" />
+          </div>
+
+        </div>
+        <div className="col-md-3">
+          <button className="btn btn-primary-outline" onClick={this.createTestCard}><i className="fa fa-edit"></i> Add Test Card</button>
+        </div>
+      </div>
+    )
+  }
 })
