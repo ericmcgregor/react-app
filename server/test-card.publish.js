@@ -6,7 +6,7 @@ Meteor.publish('testCard', function(options={}, searchString) {
   }
   if(!options.sort) {
     options.sort= {
-        date_created: -1
+        created: -1
       }
   }
   Counts.publish(this, 'numberOfTestCard', TestCard.find({
@@ -23,7 +23,9 @@ Meteor.publish('testCard', function(options={}, searchString) {
   }, options);
 });
 
-
+TestCard.before.insert(function (userId, doc) {
+    doc.created = Date.unow();
+});
 TestCard.after.remove(function(userId, testCard){
   Learnings.remove({testCardId:testCard._id});
 });

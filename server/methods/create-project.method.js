@@ -8,5 +8,8 @@ Meteor.methods({
     Meteor.call('createHypothesis', projectId);
 
     return projectId;
+  },
+  removeAllProjects:function(){
+    Projects.remove({});
   }
 });

@@ -26,6 +26,7 @@ NavMenu = React.createClass({
         return <NavMenuItem key={project._id} project={project} />
       })}
     </ul>
+    <br />
     <button className="btn btn-success-outline btn-block" onClick={this.createProject}>create project</button>
 
     </div>

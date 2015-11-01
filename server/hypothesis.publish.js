@@ -6,7 +6,7 @@ Meteor.publish('hypothesis', function(options={}, searchString) {
   }
   if(!options.sort) {
     options.sort= {
-        date_created: -1
+        created: -1
       }
   }
   Counts.publish(this, 'numberOfHypothesis', Hypothesis.find({
@@ -23,6 +23,10 @@ Meteor.publish('hypothesis', function(options={}, searchString) {
   }, options);
 });
 
+
+Hypothesis.before.insert(function (userId, doc) {
+    doc.created = Date.unow();
+});
 Hypothesis.after.remove(function(userId, hypothesis){
   TestCard.remove({hypothesiId:hypothesis._id});
 });

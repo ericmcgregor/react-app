@@ -6,7 +6,7 @@ Meteor.publish('learnings', function(options={}, searchString) {
   }
   if(!options.sort) {
     options.sort= {
-        date_created: -1
+        created: -1
       }
   }
   Counts.publish(this, 'numberOfLearnings', Learnings.find({
@@ -22,7 +22,9 @@ Meteor.publish('learnings', function(options={}, searchString) {
     }
   }, options);
 });
-
+Learnings.before.insert(function (userId, doc) {
+    doc.created = Date.unow();
+});
 Learnings.after.update(function(userId, learning, fieldNames, modifier, options){
   // TestCard.remove({hypothesiId:hypothesis._id});
   let state = 'learning';

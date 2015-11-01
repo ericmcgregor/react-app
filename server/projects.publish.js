@@ -6,7 +6,7 @@ Meteor.publish('projects', function(options={}, searchString) {
   }
   if(!options.sort) {
     options.sort= {
-        date_created: -1
+        created: -1
       }
   }
   Counts.publish(this, 'numberOfProjects', Projects.find({
@@ -22,7 +22,9 @@ Meteor.publish('projects', function(options={}, searchString) {
     }
   }, options);
 });
-
+Projects.before.insert(function (userId, doc) {
+    doc.created = Date.unow();
+});
 Projects.after.remove(function(userId, project){
   Hypothesis.remove({projectId:project._id});
 });
