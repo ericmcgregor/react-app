@@ -6,7 +6,7 @@ HypothesisRow = React.createClass({
 
   getInitialState() {
     return {
-      showForm:false
+      showForm:null
     }
   },
 
@@ -21,12 +21,6 @@ HypothesisRow = React.createClass({
     Hypothesis.remove(this.props.hypothesis._id);
   },
 
-  createTestCard() {
-    // Meteor.call('createTestCard', this.props.hypothesis._id);
-    this.setState({
-      showForm:!this.state.showForm
-    })
-  },
 
   handleChange(key, value, evt) {
     let state = {}
@@ -38,24 +32,22 @@ HypothesisRow = React.createClass({
       $set:state
     });
   },
-  // componentWillUpdate(object, nextProps) {
-  //   console.log(object, this.state, nextProps)
-  //   if(this.state.TestCards.length !== nextProps.TestCards.length) {
-  //     this.state.showForm = false;
-  //   }
-  // },
-  shouldToggleForm() {
 
+  shouldToggleForm() {
     if(this.data.TestCards.length === 0 || this.state.showForm === true) {
-      return <div className="card-block"><AddTestCardForm hypothesis={this.props.hypothesis} /></div>;
+      return true;
     }
-    return null;
+    return false;
   },
 
-
+  toggleForm() {
+    let state = !this.state.showForm;
+    this.setState({
+      showForm:state
+    });
+  },
   render() {
     let hypothesi = this.props.hypothesis;
-    // let
 
     return <div>
 
@@ -67,12 +59,12 @@ HypothesisRow = React.createClass({
             </div>
             <div className="col-xs-4">
               <a href="#" className="card-link pull-right m-l" onClick={this.removeHypothesis}>Remove</a>
-              <a href="#" className="card-link pull-right" onClick={this.createTestCard}>create test card</a>
+              <a href="#" className="card-link pull-right" onClick={this.toggleForm}>create test card</a>
             </div>
           </div>
         </div>
 
-        {this.shouldToggleForm()}
+        <AddTestCardForm hypothesis={this.props.hypothesis} show={this.shouldToggleForm()} toggleForm={this.toggleForm}/>
 
         <div className="card-block">
           {this.data.TestCards.map(function(testCard){
@@ -102,6 +94,8 @@ AddTestCardForm = React.createClass({
     this.setState({
       name:''
     })
+    console.log('triggering form')
+    this.props.toggleForm(false);
   },
 
   handleChange(evt) {
@@ -110,14 +104,20 @@ AddTestCardForm = React.createClass({
       });
   },
 
-  render(){
+  renderForm() {
     return (
+      <div className="card-block">
       <div className="input-group">
         <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your Test" />
         <span className="input-group-btn">
             <button className="btn btn-primary-outline" onClick={this.createTestCard}><i className="fa fa-edit"></i> Add Test Card</button>
         </span>
       </div>
+      </div>
     )
+  },
+
+  render(){
+    return this.props.show ? this.renderForm() : null
   }
 })
