@@ -4,6 +4,12 @@ HypothesisRow = React.createClass({
   },
   mixins: [ReactMeteorData],
 
+  getInitialState() {
+    return {
+      showForm:false
+    }
+  },
+
   // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {
     return {
@@ -14,8 +20,12 @@ HypothesisRow = React.createClass({
   removeHypothesis() {
     Hypothesis.remove(this.props.hypothesis._id);
   },
+
   createTestCard() {
-    Meteor.call('createTestCard', this.props.hypothesis._id);
+    // Meteor.call('createTestCard', this.props.hypothesis._id);
+    this.setState({
+      showForm:!this.state.showForm
+    })
   },
 
   handleChange(key, value, evt) {
@@ -28,10 +38,25 @@ HypothesisRow = React.createClass({
       $set:state
     });
   },
+  // componentWillUpdate(object, nextProps) {
+  //   console.log(object, this.state, nextProps)
+  //   if(this.state.TestCards.length !== nextProps.TestCards.length) {
+  //     this.state.showForm = false;
+  //   }
+  // },
+  shouldToggleForm() {
+
+    if(this.data.TestCards.length === 0 || this.state.showForm === true) {
+      return <div className="card-block"><AddTestCardForm hypothesis={this.props.hypothesis} /></div>;
+    }
+    return null;
+  },
+
 
   render() {
     let hypothesi = this.props.hypothesis;
     // let
+
     return <div>
 
       <div className="card">
@@ -46,13 +71,9 @@ HypothesisRow = React.createClass({
             </div>
           </div>
         </div>
-        <div className="card-block">
 
-        {this.data.TestCards.length > 0 ? null : <AddTestCardForm hypothesis={this.props.hypothesis} />}
+        {this.shouldToggleForm()}
 
-
-
-        </div>
         <div className="card-block">
           {this.data.TestCards.map(function(testCard){
             return <TestCardRow key={testCard._id} testCard={testCard} />
@@ -91,17 +112,11 @@ AddTestCardForm = React.createClass({
 
   render(){
     return (
-      <div className="row">
-        <div className="col-md-6">
-          <div className="form-group">
-            <label className="sr-only" >Test Card</label>
-            <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your Test" />
-          </div>
-
-        </div>
-        <div className="col-md-3">
-          <button className="btn btn-primary-outline" onClick={this.createTestCard}><i className="fa fa-edit"></i> Add Test Card</button>
-        </div>
+      <div className="input-group">
+        <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your Test" />
+        <span className="input-group-btn">
+            <button className="btn btn-primary-outline" onClick={this.createTestCard}><i className="fa fa-edit"></i> Add Test Card</button>
+        </span>
       </div>
     )
   }

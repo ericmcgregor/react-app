@@ -38,11 +38,17 @@ ProjectRow = React.createClass({
     <div>
       <nav className="navbar">
         <EditNavTitleMixin title={this.props.project.name} handleChange={this.handleChangeNavTitle.bind(this, 'name', null)} />
-        <form className="form-inline navbar-form pull-right">
+
+      <form className="form-inline navbar-form pull-right m-l">
+          <div className="form-group">
             <div className="btn-group pull-right btn-group" role="group" aria-label="Third group">
               <button type="button" className="btn btn-secondary"><i className="fa fa-trash-o"></i></button>
             </div>
-          </form>
+          </div>
+        </form>
+
+        <AddHypothesisForm project={this.props.project} />
+
       </nav>
 
       <div className="p-a">
@@ -54,10 +60,6 @@ ProjectRow = React.createClass({
       </div>
 
 
-            <div className="p-x"><hr /></div>
-
-              <AddHypothesisForm project={this.props.project} />
-              
     </div>
   )
 },
@@ -91,23 +93,40 @@ AddHypothesisForm = React.createClass({
 
   render(){
     return (
-    <div className="container-fluid p-y">
-      <div className="row">
-        <div className="col-md-6">
-          <div className="form-group">
-            <label className="sr-only" >Hypothesis</label>
-            <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your hypothesis" />
-          </div>
 
-        </div>
-        <div className="col-md-1">
-          <button className="btn btn-primary-outline btn-block" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
-        </div>
-      </div>
+      <div className="form-inline navbar-form pull-right">
+        <div className="input-group">
+              <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your hypothesis" />
+              <span className="input-group-btn">
+                  <button className="btn btn-primary-outline" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
+              </span>
+            </div>
     </div>
+
+
     )
   }
 })
+
+
+// <div className="container-fluid p-y">
+//   <div className="row">
+//     <div className="col-md-6">
+//       <div className="form-group">
+//         <label className="sr-only" >Hypothesis</label>
+//         <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your hypothesis" />
+//       </div>
+//
+//     </div>
+//     <div className="col-md-1">
+//       <button className="btn btn-primary-outline btn-block" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
+//     </div>
+//   </div>
+// </div>
+
+
+
+
 // <div className="p-a">
 //   <form className="form-inline">
 //     <div className="form-group">
