@@ -103,12 +103,24 @@ AddTestCardForm = React.createClass({
         name:evt.target.value
       });
   },
-
+  componentDidUpdate() {
+    let node = React.findDOMNode(this.refs.editFocus)
+    node ? node.focus() : null;
+  },
+  componentDidMount() {
+    let node = React.findDOMNode(this.refs.editFocus)
+    node ? node.focus() : null;
+  },
+  handleKeyUp: function(e) {
+    if(e.which === 13) {
+      this.createTestCard();
+    }
+ },
   renderForm() {
     return (
       <div className="card-block">
       <div className="input-group">
-        <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your Test" />
+        <input onKeyUp={this.handleKeyUp} ref="editFocus" type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your Test" />
         <span className="input-group-btn">
             <button className="btn btn-primary-outline" onClick={this.createTestCard}><i className="fa fa-edit"></i> Add Test Card</button>
         </span>

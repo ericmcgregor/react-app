@@ -32,6 +32,18 @@ ProjectRow = React.createClass({
     });
   },
 
+  shouldRenderForm(location) {
+    console.log(location)
+      if(this.data.hypothesis.length===0 && location==='body' ) {
+        return true;
+      }
+
+      if(this.data.hypothesis.length>0 && location==='nav') {
+        return true;
+      }
+
+      return false;
+  },
 
   render() {
     return (
@@ -42,14 +54,16 @@ ProjectRow = React.createClass({
       <form className="form-inline navbar-form pull-right m-l">
           <div className="form-group">
             <div className="btn-group pull-right btn-group" role="group" aria-label="Third group">
-              <button type="button" className="btn btn-secondary"><i className="fa fa-trash-o"></i></button>
+              <button type="button" className="btn btn-secondary" onClick={this.removeProject}><i className="fa fa-trash-o"></i></button>
             </div>
           </div>
         </form>
 
-        <AddHypothesisForm project={this.props.project} />
+        <AddHypothesisForm project={this.props.project} view="nav" show={this.shouldRenderForm("nav")} />
 
       </nav>
+
+      <AddHypothesisForm project={this.props.project} view="body" show={this.shouldRenderForm("body")}/>
 
       <div className="p-a">
           {
@@ -90,23 +104,56 @@ AddHypothesisForm = React.createClass({
         name:evt.target.value
       });
   },
-
-  render(){
-    return (
-
+  componentDidUpdate() {
+    let node = React.findDOMNode(this.refs.editFocus)
+    node ? node.focus() : null;
+  },
+  componentDidMount() {
+    let node = React.findDOMNode(this.refs.editFocus)
+    node ? node.focus() : null;
+  },
+  handleKeyUp: function(e) {
+    if(e.which === 13) {
+      this.createHypothesis();
+    }
+ },
+  renderFormInNav() {
+    return(
       <div className="form-inline navbar-form pull-right">
-        <div className="input-group">
-              <input type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your hypothesis" />
+          <div className="input-group">
+            <input type="text" className="form-control" value={this.state.name} onKeyUp={this.handleKeyUp} onChange={this.handleChange} placeholder="new hypothesis" />
+            <span className="input-group-btn">
+                <button className="btn btn-primary-outline" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
+            </span>
+          </div>
+      </div>
+    )
+  },
+  renderFormInBody() {
+      return (
+        <div className="card-block">
+            <div className="input-group">
+              <input ref="editFocus" onKeyUp={this.handleKeyUp} type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your first hypothesis?" />
               <span className="input-group-btn">
                   <button className="btn btn-primary-outline" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
               </span>
             </div>
-    </div>
-
-
-    )
+        </div>
+      )
+  },
+  renderForm() {
+    return this.props.view==="nav" ? this.renderFormInNav() : this.renderFormInBody()
+  },
+  render(){
+    console.log(this.props)
+    return this.props.show ? this.renderForm() : null
   }
 })
+
+
+
+
+
 
 
 // <div className="container-fluid p-y">
