@@ -94,7 +94,6 @@ AddTestCardForm = React.createClass({
     this.setState({
       name:''
     })
-    console.log('triggering form')
     this.props.toggleForm(false);
   },
 
@@ -114,6 +113,9 @@ AddTestCardForm = React.createClass({
   handleKeyUp: function(e) {
     if(e.which === 13) {
       this.createTestCard();
+    }
+    if(e.which === 27) {
+      this.props.toggleForm(false);
     }
  },
   renderForm() {

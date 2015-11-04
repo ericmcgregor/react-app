@@ -62,6 +62,23 @@ ToggleAddProjectForm = React.createClass({
       name:''
     });
   },
+  componentDidUpdate() {
+    let node = React.findDOMNode(this.refs.editFocus)
+    node ? node.focus() : null;
+  },
+  componentDidMount() {
+    let node = React.findDOMNode(this.refs.editFocus)
+    node ? node.focus() : null;
+  },
+  handleKeyUp: function(e) {
+    if(e.which === 13) {
+      this.createProject();
+    }
+    if(e.which === 27) {
+      this.toggleForm();
+    }
+ },
+
   renderButton() {
     return (
       <button onClick={this.toggleForm} className="btn btn-secondary-outline btn-block"><i className="fa fa-plus"></i> New Project</button>
@@ -71,7 +88,7 @@ ToggleAddProjectForm = React.createClass({
     return (
       <div>
         <fieldset className="form-group">
-          <input type="text" value={this.state.name} onChange={this.handleChange} className="form-control" placeholder="Project Name" />
+          <input ref="editFocus" onKeyUp={this.handleKeyUp} type="text" value={this.state.name} onChange={this.handleChange} className="form-control" placeholder="Project Name" />
         </fieldset>
         <fieldset className="form-group">
           <button onClick={this.createProject} className="btn btn-success-outline btn-block"><i className="fa fa-plus"></i> Create Project</button>

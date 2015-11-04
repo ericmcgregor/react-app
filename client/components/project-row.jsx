@@ -113,6 +113,7 @@ AddHypothesisForm = React.createClass({
     node ? node.focus() : null;
   },
   handleKeyUp: function(e) {
+    console.log(e.which)
     if(e.which === 13) {
       this.createHypothesis();
     }
@@ -123,7 +124,7 @@ AddHypothesisForm = React.createClass({
           <div className="input-group">
             <input type="text" className="form-control" value={this.state.name} onKeyUp={this.handleKeyUp} onChange={this.handleChange} placeholder="new hypothesis" />
             <span className="input-group-btn">
-                <button className="btn btn-primary-outline" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
+                <button className="btn btn-secondary-outline" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
             </span>
           </div>
       </div>
@@ -145,7 +146,6 @@ AddHypothesisForm = React.createClass({
     return this.props.view==="nav" ? this.renderFormInNav() : this.renderFormInBody()
   },
   render(){
-    console.log(this.props)
     return this.props.show ? this.renderForm() : null
   }
 })
