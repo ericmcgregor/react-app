@@ -68,7 +68,7 @@ HypothesisContainer = React.createClass({
 
         <div className="card-block">
           {this.data.TestCards.map(function(testCard){
-            return <TestCardRow key={testCard._id} testCard={testCard} />
+            return <TestCardContainer key={testCard._id} testCard={testCard} />
           })}
         </div>
 

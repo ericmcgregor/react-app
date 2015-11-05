@@ -1,4 +1,4 @@
-TestCardRow = React.createClass({
+TestCardContainer = React.createClass({
   propTypes: {
     testCard: React.PropTypes.object.isRequired
   },
