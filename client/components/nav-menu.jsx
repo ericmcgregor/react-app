@@ -80,7 +80,7 @@ ToggleAddProjectForm = React.createClass({
     return (
       <div>
         <fieldset className="form-group">
-          <input ref="editFocus" onKeyUp={this.handleKeyUp} type="text" value={this.state.name} onChange={this.handleChange} className="form-control" placeholder="Project Name" />
+          <input ref="editFocus" onBlur={this.handleKeyEscape} onKeyUp={this.handleKeyUp} type="text" value={this.state.name} onChange={this.handleChange} className="form-control" placeholder="Project Name" />
         </fieldset>
         <fieldset className="form-group">
           <button onClick={this.createProject} className="btn btn-success-outline btn-block"><i className="fa fa-plus"></i> Create Project</button>

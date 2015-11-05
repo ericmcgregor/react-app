@@ -5,7 +5,7 @@ AddTestCardForm = React.createClass({
   },
 
   mixins:[FormFocusMixin],
-  
+
   getInitialState() {
     return {
       name:''
@@ -33,6 +33,7 @@ AddTestCardForm = React.createClass({
  handleKeyEscape() {
    return this.props.toggleForm(false);
  },
+
   renderForm() {
     return (
       <div className="card-block">
