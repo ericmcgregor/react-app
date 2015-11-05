@@ -68,7 +68,7 @@ ProjectContainer = React.createClass({
       <div className="p-a">
           {
             this.data.hypothesis.map(function(hypothesis){
-              return <HypothesisRow key={hypothesis._id} hypothesis={hypothesis} />;
+              return <HypothesisContainer key={hypothesis._id} hypothesis={hypothesis} />;
             })
           }
       </div>
