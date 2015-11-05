@@ -21,7 +21,7 @@ App = React.createClass({
 
 
   renderContent() {
-    return <ProjectRow key={this.data.project._id} project={this.data.project} />
+    return <ProjectContainer key={this.data.project._id} project={this.data.project} />
   },
 
   render() {
