@@ -3,6 +3,9 @@ AddHypothesisForm = React.createClass({
   propTypes: {
     project: React.PropTypes.object.isRequired
   },
+
+  mixins:[FormFocusMixin],
+
   getInitialState() {
     return {
       name:''
@@ -21,20 +24,11 @@ AddHypothesisForm = React.createClass({
         name:evt.target.value
       });
   },
-  componentDidUpdate() {
-    let node = React.findDOMNode(this.refs.editFocus)
-    node ? node.focus() : null;
+
+  handleKeyEnter() {
+    return this.createHypothesis();
   },
-  componentDidMount() {
-    let node = React.findDOMNode(this.refs.editFocus)
-    node ? node.focus() : null;
-  },
-  handleKeyUp: function(e) {
-    console.log(e.which)
-    if(e.which === 13) {
-      this.createHypothesis();
-    }
- },
+
   renderFormInNav() {
     return(
       <div className="form-inline navbar-form pull-right">

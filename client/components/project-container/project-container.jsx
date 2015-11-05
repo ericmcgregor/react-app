@@ -33,7 +33,6 @@ ProjectContainer = React.createClass({
   },
 
   shouldRenderForm(location) {
-    console.log(location)
       if(this.data.hypothesis.length===0 && location==='body' ) {
         return true;
       }

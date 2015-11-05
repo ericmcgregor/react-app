@@ -3,6 +3,9 @@ AddTestCardForm = React.createClass({
   propTypes: {
     hypothesis: React.PropTypes.object.isRequired
   },
+
+  mixins:[FormFocusMixin],
+  
   getInitialState() {
     return {
       name:''
@@ -22,21 +25,13 @@ AddTestCardForm = React.createClass({
         name:evt.target.value
       });
   },
-  componentDidUpdate() {
-    let node = React.findDOMNode(this.refs.editFocus)
-    node ? node.focus() : null;
-  },
-  componentDidMount() {
-    let node = React.findDOMNode(this.refs.editFocus)
-    node ? node.focus() : null;
-  },
-  handleKeyUp: function(e) {
-    if(e.which === 13) {
-      this.createTestCard();
-    }
-    if(e.which === 27) {
-      this.props.toggleForm(false);
-    }
+
+
+ handleKeyEnter() {
+   return this.createTestCard();
+ },
+ handleKeyEscape() {
+   return this.props.toggleForm(false);
  },
   renderForm() {
     return (

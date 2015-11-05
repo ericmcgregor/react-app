@@ -41,8 +41,10 @@ ToggleAddProjectForm = React.createClass({
       name:''
     }
   },
+
+  mixins:[FormFocusMixin],
+
   toggleForm() {
-    console.log(this.state)
     this.setState({
       show:!this.state.show
     });
@@ -62,23 +64,13 @@ ToggleAddProjectForm = React.createClass({
       name:''
     });
   },
-  componentDidUpdate() {
-    let node = React.findDOMNode(this.refs.editFocus)
-    node ? node.focus() : null;
-  },
-  componentDidMount() {
-    let node = React.findDOMNode(this.refs.editFocus)
-    node ? node.focus() : null;
-  },
-  handleKeyUp: function(e) {
-    if(e.which === 13) {
-      this.createProject();
-    }
-    if(e.which === 27) {
-      this.toggleForm();
-    }
- },
 
+  handleKeyEnter(){
+    this.createProject();
+  },
+  handleKeyEscape(){
+    this.toggleForm();
+  },
   renderButton() {
     return (
       <button onClick={this.toggleForm} className="btn btn-secondary-outline btn-block"><i className="fa fa-plus"></i> New Project</button>
@@ -103,36 +95,5 @@ ToggleAddProjectForm = React.createClass({
   }
 })
 
-NavMenuItem = React.createClass({
-  getInitialState() {
-    return {
-      toggleRemove:false
-    }
-  },
-  removeProject() {
-    Projects.remove(this.props.project._id);
-  },
-  toggleRemove(){
-    this.setState({
-      toggleRemove:!this.state.toggleRemove
-    });
-  },
-
-  render(project=this.props.project) {
-    let classes='list-group-item hover-remove ';
-    // if(FlowRouter.getParam('projectId') === this.props.project._id) {
-    //   classes = classes+' active';
-    // }
-
-    return (
-      <li key={project._id} className={classes}>
-        <span className="label label-default label-pill pull-right" onClick={this.removeProject}>x</span>
-        <a href={'/projects/'+project._id}>
-          {project.name}
-        </a>
-      </li>
-    )
-  }
-})
 //<span className="label label-default label-pill pull-right">14</span>
 // href={'/projects/'+project._id}
