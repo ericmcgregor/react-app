@@ -49,32 +49,33 @@ HypothesisContainer = React.createClass({
   render() {
     let hypothesi = this.props.hypothesis;
 
-    return <div>
+    return (
 
-      <div className="card">
-        <div className="card-block">
-          <div className="row">
-            <div className="col-xs-8">
-              <EditHypothesisTitle title={hypothesi.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
-            </div>
-            <div className="col-xs-4">
-              <a href="#" className="card-link pull-right m-l" onClick={this.removeHypothesis}>Remove</a>
-              <a href="#" className="card-link pull-right" onClick={this.toggleForm}>create test card</a>
+      <div>
+        <div className="card">
+          <div className="card-block">
+            <div className="row">
+              <div className="col-xs-8">
+                <EditHypothesisTitle title={hypothesi.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
+              </div>
+              <div className="col-xs-4">
+                <a href="#" className="card-link pull-right m-l" onClick={this.removeHypothesis}>Remove</a>
+                <a href="#" className="card-link pull-right" onClick={this.toggleForm}>create test card</a>
+              </div>
             </div>
           </div>
+          
+          <AddTestCardForm hypothesis={this.props.hypothesis} show={this.shouldToggleForm()} toggleForm={this.toggleForm}/>
+
+          <div className="card-block">
+            {this.data.TestCards.map(function(testCard){
+              return <TestCardContainer key={testCard._id} testCard={testCard} />
+            })}
+          </div>
+
         </div>
-
-        <AddTestCardForm hypothesis={this.props.hypothesis} show={this.shouldToggleForm()} toggleForm={this.toggleForm}/>
-
-        <div className="card-block">
-          {this.data.TestCards.map(function(testCard){
-            return <TestCardContainer key={testCard._id} testCard={testCard} />
-          })}
-        </div>
-
       </div>
-
-    </div>
+    )
   }
 
 })

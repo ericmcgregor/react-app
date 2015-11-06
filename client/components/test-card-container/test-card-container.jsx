@@ -11,11 +11,29 @@ TestCardContainer = React.createClass({
     }
   },
 
+  getInitialState() {
+    return {
+      view:this.props.testCard.test ? true : false
+    }
+  },
   removeTestCard() {
     TestCard.remove(this.props.testCard._id);
   },
 
+  toggleView() {
+    this.setState({
+      view:!this.state.view
+    })
+  },
   renderContent() {
+    if(!this.data.learningCard) {
+      return null;
+    }
+
+    if(this.state.view===true) {
+      return null;
+    }
+
     return (
       <div className="card">
 
@@ -33,6 +51,12 @@ TestCardContainer = React.createClass({
               <LearningCard learningCard={this.data.learningCard} />
             </div>
           </div>
+          <hr />
+          <div className="row">
+            <div className="col-md-4">
+              <button onClick={this.toggleView} className="btn btn-primary-outline">save</button>
+            </div>
+          </div>
       </div>
 
     </div>
@@ -42,7 +66,9 @@ TestCardContainer = React.createClass({
   render() {
 
     return <div>
-      {this.data.learningCard? this.renderContent() : <p>Loading...</p>}
+      <TestCardOverview show={this.state.view} toggleView={this.toggleView} testCard={this.props.testCard} learningCard={this.data.learningCard} />
+
+      {this.renderContent()}
     </div>
 
 

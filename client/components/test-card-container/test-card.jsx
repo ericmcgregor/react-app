@@ -23,7 +23,7 @@ TestCardComponent = React.createClass({
     return (
       <div>
         <div>
-          <h6 className="text-muted">We will verify this by:</h6>
+          <h6 className="text-muted">We will:</h6>
           <fieldset className="form-group">
             <textarea className="form-control"  rows="3" value={this.props.testCard.test} onChange={this.handleChange.bind(this, 'test', null)}></textarea>
           </fieldset>

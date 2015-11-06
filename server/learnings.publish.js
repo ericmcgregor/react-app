@@ -27,7 +27,7 @@ Learnings.before.insert(function (userId, doc) {
 });
 Learnings.after.update(function(userId, learning, fieldNames, modifier, options){
   // TestCard.remove({hypothesiId:hypothesis._id});
-  let state = 'learning';
+  let state = learning.result;
 
   if(fieldNames[0]==='result' && !modifier.$set.result) {
     state = 'measure';
