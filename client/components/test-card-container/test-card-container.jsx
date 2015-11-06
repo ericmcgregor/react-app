@@ -37,8 +37,6 @@ TestCardContainer = React.createClass({
     return (
       <div className="card">
 
-        <div className="card-options" onClick={this.removeTestCard}></div>
-
         <div className="card-block">
           <div className="row">
             <div className="col-md-4">
@@ -54,7 +52,8 @@ TestCardContainer = React.createClass({
           <hr />
           <div className="row">
             <div className="col-md-4">
-              <button onClick={this.toggleView} className="btn btn-primary-outline">save</button>
+              <button onClick={this.toggleView} className="btn btn-primary-outline m-r">save</button>
+              <button onClick={this.removeTestCard} className="btn btn-secondary-outline">remove test</button>
             </div>
           </div>
       </div>

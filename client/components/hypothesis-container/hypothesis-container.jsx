@@ -59,12 +59,20 @@ HypothesisContainer = React.createClass({
                 <EditHypothesisTitle title={hypothesi.name} handleChange={this.handleChange.bind(this, 'name', null)}/>
               </div>
               <div className="col-xs-4">
-                <a href="#" className="card-link pull-right m-l" onClick={this.removeHypothesis}>Remove</a>
-                <a href="#" className="card-link pull-right" onClick={this.toggleForm}>create test card</a>
+                  <div className="btn-group pull-right">
+                    <button type="button" className="btn btn-sm btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i className="fa fa-bars"></i>
+                    </button>
+                    <div className="dropdown-menu">
+                      <a href="#" className="dropdown-item" onClick={this.toggleForm}>Create test card</a>
+                      <div className="dropdown-divider"></div>
+                      <a href="#" className="dropdown-item" onClick={this.removeHypothesis}>Remove hypothesis</a>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
-          
+
           <AddTestCardForm hypothesis={this.props.hypothesis} show={this.shouldToggleForm()} toggleForm={this.toggleForm}/>
 
           <div className="card-block">
