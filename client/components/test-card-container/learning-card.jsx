@@ -18,7 +18,18 @@ LearningCard = React.createClass({
       $set:state
     });
   },
+  learnings() {
 
+  },
+  removeLearning(index) {
+    Learnings.update({
+      _id:this.props.learningCard._id
+    }, {
+      $set:{
+        learningTest:_.omit(this.props.learningCard.learningTest,index)
+      }
+    });
+  },
   render() {
     return (
       <div>
@@ -30,9 +41,12 @@ LearningCard = React.createClass({
         </div>
         <div>
           <h6 className="text-muted">We Learned:</h6>
-          <fieldset className="form-group">
-            <textarea className="form-control" rows="3" value={this.props.learningCard.learning} onChange={this.handleChange.bind(this, 'learning', null)}></textarea>
-          </fieldset>
+          <LearningsComponent learningCard={this.props.learningCard} />
+            <ul>
+            {Object.keys(this.props.learningCard.learningTest).map((key, value) => {
+              return <li onClick={this.removeLearning.bind(this, key)} key={value}>{this.props.learningCard.learningTest[key]}</li>
+            })}
+            </ul>
         </div>
         <div>
           <h6 className="text-muted">Next Steps:</h6>
@@ -45,3 +59,7 @@ LearningCard = React.createClass({
     )
   }
 });
+//
+// <fieldset className="form-group">
+//   <textarea className="form-control" rows="3" value={this.props.learningCard.learning} onChange={this.handleChange.bind(this, 'learning', null)}></textarea>
+// </fieldset>

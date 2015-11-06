@@ -1,4 +1,15 @@
 Meteor.startup(function() {
+  // Learnings.find().fetch().forEach(function(doc){
+  //   if(!doc.learningTest) {
+  //     Learnings.update({
+  //       _id:{$eq:doc._id}
+  //     }, {
+  //       $set:{
+  //         learningTest:{}
+  //       }
+  //     });
+  //   }
+  // })
   // if(Learnings.find().count() === 0) {
   //   var learnings = [
   //     {
