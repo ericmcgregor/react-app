@@ -1,7 +1,7 @@
 LearningsComponent = React.createClass({
   getInitialState(){
     return {
-      learning:'test'
+      learning:''
     }
   },
   handleChange(evt){

@@ -22,14 +22,13 @@ reactjs:react
 mquandalle:bower
 tmeasday:publish-counts
 aldeed:collection2
-angularutils:pagination
 accounts-password
 accounts-ui
 underscore
 digilord:faker
 matb33:collection-hooks
 fourseven:scss
-chuikoff:bootstrap-4
 kadira:flow-router
 kadira:react-layout
 fortawesome:fontawesome
+ericmcgregor:bootstrap4scss
