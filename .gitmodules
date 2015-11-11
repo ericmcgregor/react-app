@@ -1,0 +1,3 @@
+[submodule "packages/bootstrap4scss"]
+	path = packages/bootstrap4scss
+	url = https://github.com/ericmcgregor/bootstrap4scss
