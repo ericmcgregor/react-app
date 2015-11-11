@@ -48,5 +48,12 @@ html, body {
 
 
 .side-nav {
-  width:240px;
+  @include make-col();
+  width:320px;
+}
+.main-content {
+}
+
+body.container-fluid {
+  padding:0!important;
 }
