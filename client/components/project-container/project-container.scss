@@ -1,0 +1,8 @@
+@import "../../app.scss";
+.navbar.project-navbar {
+  @include border-radius(0);
+  @extend .m-b;
+  @extend .p-b-md;
+
+  border-bottom:1px solid $nav-tabs-border-color;
+}

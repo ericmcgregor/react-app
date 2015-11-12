@@ -1,10 +1,10 @@
 FormFocusMixin = {
   componentDidUpdate() {
-    let node = React.findDOMNode(this.refs.editFocus)
+    let node = ReactDOM.findDOMNode(this.refs.editFocus)
     node ? node.focus() : null;
   },
   componentDidMount() {
-    let node = React.findDOMNode(this.refs.editFocus)
+    let node = ReactDOM.findDOMNode(this.refs.editFocus)
     node ? node.focus() : null;
   },
   handleKeyUp: function(e) {

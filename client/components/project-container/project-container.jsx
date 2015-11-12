@@ -47,7 +47,7 @@ ProjectContainer = React.createClass({
   render() {
     return (
     <div>
-      <nav className="navbar">
+      <nav className="navbar project-navbar">
         <EditNavTitleMixin title={this.props.project.name} handleChange={this.handleChangeNavTitle.bind(this, 'name', null)} />
 
       <form className="form-inline navbar-form pull-right m-l">

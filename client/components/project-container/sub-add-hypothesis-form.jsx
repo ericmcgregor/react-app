@@ -32,12 +32,14 @@ AddHypothesisForm = React.createClass({
   renderFormInNav() {
     return(
       <div className="form-inline navbar-form pull-right">
-          <div className="input-group">
+        <div className="form-group">
+          <div className="">
             <input type="text" className="form-control" value={this.state.name} onKeyUp={this.handleKeyUp} onChange={this.handleChange} placeholder="new hypothesis" />
             <span className="input-group-btn">
                 <button className="btn btn-secondary-outline" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
             </span>
           </div>
+        </div>
       </div>
     )
   },

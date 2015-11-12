@@ -5,7 +5,7 @@ EditMixin = {
     })
   },
   componentDidUpdate() {
-    let node = React.findDOMNode(this.refs.editName)
+    let node = ReactDOM.findDOMNode(this.refs.editName)
     node ? node.focus() : null;
   },
   toggleEdit() {
