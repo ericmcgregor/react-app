@@ -61,16 +61,16 @@ ProjectContainer = React.createClass({
         <AddHypothesisForm project={this.props.project} view="nav" show={this.shouldRenderForm("nav")} />
 
       </nav>
+      {
+        this.data.hypothesis.map(function(hypothesis){
+          return <HypothesisContainerList key={hypothesis._id} hypothesis={hypothesis} />
+        })
+      }
+
 
       <AddHypothesisForm project={this.props.project} view="body" show={this.shouldRenderForm("body")}/>
 
-      <div className="p-a">
-          {
-            this.data.hypothesis.map(function(hypothesis){
-              return <HypothesisContainer key={hypothesis._id} hypothesis={hypothesis} />;
-            })
-          }
-      </div>
+
 
 
     </div>
@@ -79,3 +79,12 @@ ProjectContainer = React.createClass({
 
 
 });
+
+
+// <div className="p-a">
+//     {
+//       this.data.hypothesis.map(function(hypothesis){
+//         return <HypothesisContainer key={hypothesis._id} hypothesis={hypothesis} />;
+//       })
+//     }
+// </div>

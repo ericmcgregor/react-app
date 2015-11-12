@@ -6,3 +6,25 @@
 
   border-bottom:1px solid $nav-tabs-border-color;
 }
+
+.row-options {
+  display:flex;
+  justify-content:flex-end;
+  align-items: flex-start;
+  .dropdown-menu {
+    left:-100%!important;
+    top:0;
+  }
+  button {
+    visibility:hidden;
+  }
+  &:hover {
+    button {
+      visibility:visible;
+    }
+  }
+}
+
+.hypothesis-row {
+  min-height:40px;
+}
