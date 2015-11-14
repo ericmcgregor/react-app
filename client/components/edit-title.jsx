@@ -9,7 +9,7 @@ EditHypothesisTitle = React.createClass({
     </fieldset>
   },
   renderTitle(title) {
-    return <h4 onClick={this.toggleEdit}>{title}</h4>
+    return <h6 onClick={this.toggleEdit}>{title}</h6>
   },
 
   render() {
@@ -55,7 +55,7 @@ EditNavTitleMixin = React.createClass({
     )
   },
   renderTitle(title) {
-    return <a className="navbar-brand" onClick={this.toggleEdit} href="#">{title}</a>
+    return <h3 className="navbar-brand" onClick={this.toggleEdit} href="#">{title}</h3>
   },
 
   render() {

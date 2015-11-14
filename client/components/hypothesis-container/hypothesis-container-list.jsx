@@ -1,3 +1,61 @@
+HypothesisListItem = React.createClass({
+  handleChange(key, value, evt) {
+    let state = {}
+    state[key] = value ? value : evt.target.value;
+
+    Hypothesis.update({
+      _id:this.props.hypothesis._id
+    }, {
+      $set:state
+    });
+  },
+  render() {
+    return (
+      <div className="hypothesis-row">
+      <div className="row">
+        <div className="col-md-5 title">
+          <h6 className="m-a-0" onClick={this.props.toggleListView}>{this.props.hypothesis.name}</h6>
+        </div>
+        <div className="col-md-3">
+          {
+            this.props.data.TestCards.map(function(testCard){
+              return (
+                <p key={testCard._id}>{testCard.name}</p>
+              )
+            })
+          }
+        </div>
+
+        <div className="col-md-3">
+          {
+            this.props.data.learningCard.map(function(learningCard){
+              return (
+                <p className="m-a-0" key={learningCard._id}>{learningCard.observation}</p>
+              )
+            })
+          }
+          {
+            this.props.data.TestCards.map(function(testCard){
+              return (
+                <span key={testCard._id} className="label label-default">{testCard.state}</span>
+              )
+            })
+          }
+
+        </div>
+        <div className="col-md-1 row-options">
+          <div className="btn-group" role="group" aria-label="">
+            <button type="button" className="btn btn-sm btn-secondary">
+              <i onClick={this.props.removeHypothesis} className="fa fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
+    )
+  }
+});
+
 HypothesisContainerList = React.createClass({
   mixins: [ReactMeteorData],
 
@@ -23,45 +81,26 @@ HypothesisContainerList = React.createClass({
       });
   },
 
+  handleChange(key, value, evt) {
+    let state = {}
+    state[key] = value ? value : evt.target.value;
+
+    Hypothesis.update({
+      _id:this.props.hypothesis._id
+    }, {
+      $set:state
+    });
+  },
+
+
   renderListView() {
     return (
-    <div className="row hypothesis-row">
-      <div className="col-md-4">
-        <h6 onClick={this.toggleListView}>{this.props.hypothesis.name}</h6>
-      </div>
-      <div className="col-md-3">
-        {
-          this.data.TestCards.map(function(testCard){
-            return (
-              <p key={testCard._id}>{testCard.name}</p>
-            )
-          })
-        }
-      </div>
-      <div className="col-md-1">
-        {
-          this.data.TestCards.map(function(testCard){
-            return (
-              <div key={testCard._id} className="btn btn-sm btn-secondary-outline">{testCard.state}</div>
-            )
-          })
-        }
-      </div>
-      <div className="col-md-3">
-        {
-          this.data.learningCard.map(function(learningCard){
-            return (
-              <p key={learningCard._id}>{learningCard.observation}</p>
-            )
-          })
-        }
-      </div>
-      <div className="col-md-1 row-options">
-        <button type="button" className="btn btn-sm btn-secondary">
-          <i onClick={this.removeHypothesis} className="fa fa-trash"></i>
-        </button>
-      </div>
-    </div>
+      <HypothesisListItem
+        hypothesis={this.props.hypothesis}
+        data={this.data}
+        toggleListView={this.toggleListView}
+        removeHypothesis={this.removeHypothesis}
+        />
     )
   },
 
@@ -108,7 +147,6 @@ HypothesisContainerList = React.createClass({
                   <div className="row">
                     <div className="col-md-4">
                       <button onClick={this.toggleListView}  className="btn btn-primary-outline m-r">save</button>
-                      <button onClick={this.removeTestCard} className="btn btn-secondary-outline">remove test</button>
                     </div>
                   </div>
               </div>
@@ -125,3 +163,9 @@ HypothesisContainerList = React.createClass({
     return this.state.listView === true ? this.renderListView() : this.renderFullView()
   }
 });
+
+
+
+
+
+//<h6 onClick={this.toggleListView}>{this.props.hypothesis.name}</h6>

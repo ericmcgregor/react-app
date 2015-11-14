@@ -1,4 +1,4 @@
-@import "../../app.scss";
+@import "{}/client/app.scss";
 .navbar.project-navbar {
   @include border-radius(0);
   @extend .m-b;
@@ -7,24 +7,7 @@
   border-bottom:1px solid $nav-tabs-border-color;
 }
 
-.row-options {
-  display:flex;
-  justify-content:flex-end;
-  align-items: flex-start;
-  .dropdown-menu {
-    left:-100%!important;
-    top:0;
-  }
-  button {
-    visibility:hidden;
-  }
-  &:hover {
-    button {
-      visibility:visible;
-    }
-  }
-}
-
-.hypothesis-row {
-  min-height:40px;
+.project-header {
+  border-bottom:1px solid $nav-tabs-border-color;
+  @extend .p-b-md;
 }

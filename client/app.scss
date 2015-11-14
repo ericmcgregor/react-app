@@ -7,6 +7,39 @@ html, body {
   background: white;
   position: relative;
 }
+
+
+body {
+  display:flex;
+  flex-direction: column;
+}
+.app-layout {
+  display:flex;
+  flex-direction: row;
+  flex:1;
+  overflow:hidden;
+}
+
+.side-nav {
+  width:320px;
+  display:flex;
+  flex-direction: column;
+  .side-nav-menu {
+    flex:1;
+  }
+}
+.main-content {
+  flex:auto;
+  overflow-y: scroll;
+}
+
+
+body.container-fluid {
+  padding:0!important;
+}
+
+
+
 .table {
   width:100%;
 }
@@ -44,16 +77,4 @@ html, body {
       }
     }
   }
-}
-
-
-.side-nav {
-  @include make-col();
-  width:320px;
-}
-.main-content {
-}
-
-body.container-fluid {
-  padding:0!important;
 }
