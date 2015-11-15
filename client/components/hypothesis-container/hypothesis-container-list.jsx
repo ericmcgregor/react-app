@@ -106,9 +106,8 @@ HypothesisContainerList = React.createClass({
 
   renderFullView() {
     return (
-      <div className="card">
-        <nav className="navbar navbar-light bg-faded">
-          <a className="navbar-brand" href="#">{this.props.hypothesis.name}</a>
+      <div className="">
+        <nav className="navbar navbar-light bg-faded" hidden>
 
           <div className="form-inline navbar-form pull-right">
             <button onClick={this.toggleListView} className="btn btn-secondary-outline btn-sm">
@@ -118,6 +117,9 @@ HypothesisContainerList = React.createClass({
         </nav>
 
         <div className="card-block">
+          <h5 className="m-b-md" href="#">{this.props.hypothesis.name}</h5>
+
+
           {
             this.data.TestCards.length > 0 ? null : <AddTestCardForm hypothesis={this.props.hypothesis} show={true} />
           }
@@ -147,6 +149,7 @@ HypothesisContainerList = React.createClass({
                   <div className="row">
                     <div className="col-md-4">
                       <button onClick={this.toggleListView}  className="btn btn-primary-outline m-r">save</button>
+                      <button onClick={this.toggleListView}  className="btn btn-secondary-outline m-r">cancel</button>
                     </div>
                   </div>
               </div>

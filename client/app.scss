@@ -13,23 +13,89 @@ body {
   display:flex;
   flex-direction: column;
 }
-.app-layout {
-  display:flex;
-  flex-direction: row;
-  flex:1;
-  overflow:hidden;
-}
 
-.side-nav {
-  width:320px;
+
+#app-container {
   display:flex;
   flex-direction: column;
+  position:absolute;
+  height:100%;
+  width:100%;
+
+  #global-nav-layout {
+  }
+  #app-content-layout {
+    position:relative;
+    display:flex;
+    flex-grow:1;
+
+      #side-nav-layout {
+        display:flex;
+        flex-direction:column;
+        width:240px;
+        &.close {
+          width:50px;
+          overflow:hidden;
+          background:$gray-light;
+        }
+      }
+
+      #main-content-layout {
+        flex-grow: 1;
+        display:flex;
+        flex-direction: column;
+        overflow: hidden;
+
+      }
+
+  }
+
+
+}
+
+
+
+
+.side-nav {
+  display:flex;
+  flex-direction: column;
+  flex:auto;
   .side-nav-menu {
     flex:1;
   }
+
+
 }
+
+
+
+
+
+// .app-layout {
+//   display:flex;
+//   flex-direction: column;
+//   flex:1;
+//   overflow:hidden;
+//   border:1px solid green;
+// }
+//
+// .app-content {
+//   display:flex;
+//   flex-direction: row;
+//   flex:1;
+//   overflow:hidden;
+//   border:1px solid pink;
+// }
+//
+// #side-nav-target {
+//   display:flex;
+//   flex-direction:column;
+//   border:1px solid black;
+// }
+
+
 .main-content {
-  flex:auto;
+  flex:1;
   overflow-y: scroll;
 }
 

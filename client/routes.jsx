@@ -12,6 +12,7 @@
   // });
 FlowRouter.route('/', {
   action(params) {
+    ReactLayout.render(AppLayout, {content: <App />, sidenav:<SideNav />})
   }
 });
 
@@ -22,11 +23,12 @@ let projectRoutes = FlowRouter.group({
 projectRoutes.route('/', {
   name:'projects-list',
   action:function(){
+    ReactLayout.render(AppLayout, {content: <App />})
   }
 })
 projectRoutes.route('/:projectId', {
   name:'project-details',
   action:function(params){
-
+    ReactLayout.render(AppLayout, {content: <App />})
   }
 })

@@ -1,3 +1,31 @@
+SideNav = React.createClass({
+  getInitialState() {
+    return {
+      open:true
+    }
+  },
+  close(){
+    this.setState({
+      open:!this.state.open
+    })
+  },
+  render(){
+    return(
+      <div id="side-nav-layout" className={this.state.open ? 'null' : 'close'}>
+
+      <div className="side-nav">
+        <div className="side-nav-menu p-a">
+          <NavMenu />
+        </div>
+        <div className="side-nav-footer">
+          <button onClick={this.close} className="btn btn-sm btn-secondary-outline">close</button>
+        </div>
+      </div>
+    </div>
+    )
+  }
+})
+
 // App component - represents the whole app
 NavMenu = React.createClass({
   // This mixin makes the getMeteorData method work
