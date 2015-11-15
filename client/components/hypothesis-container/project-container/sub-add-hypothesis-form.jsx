@@ -1,7 +1,7 @@
 
 AddHypothesisForm = React.createClass({
   propTypes: {
-    project: React.PropTypes.object
+    project: React.PropTypes.object.isRequired
   },
 
   mixins:[FormFocusMixin],
@@ -13,7 +13,7 @@ AddHypothesisForm = React.createClass({
   },
 
   createHypothesis() {
-    Meteor.call('createHypothesis', FlowRouter.getParam("projectId"), this.state.name);
+    Meteor.call('createHypothesis', this.props.project._id, this.state.name);
     this.setState({
       name:''
     })

@@ -1,7 +1,7 @@
 'use strict';
 
 Meteor.methods({
-  createTestCard: function(hypothesiId, name="new test") {
+  createTestCard: function(hypothesiId, name="") {
 
     let hypothesi = Hypothesis.findOne(hypothesiId);
 
