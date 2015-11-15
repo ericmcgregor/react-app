@@ -29,18 +29,14 @@ body {
   #app-content-layout {
     position:relative;
     display:flex;
+    flex-direction:row;
     flex-grow:1;
     overflow:hidden;
 
       #side-nav-layout {
         display:flex;
         flex-direction:column;
-        width:240px;
-        &.close {
-          width:50px;
-          overflow:hidden;
-          background:$gray-light;
-        }
+
       }
 
       #main-content-layout {
@@ -48,6 +44,7 @@ body {
         display:flex;
         flex-direction: column;
         overflow: hidden;
+        width:100%;
         > div {
           overflow: hidden;
           overflow-y:scroll;
@@ -61,18 +58,25 @@ body {
 
 
 
-
 .side-nav {
+  width:240px;
   display:flex;
   flex-direction: column;
   flex:auto;
   .side-nav-menu {
     flex:1;
   }
-
-
 }
 
+#side-nav-layout {
+  &.close {
+    .side-nav {
+      width:50px;
+      overflow:hidden;
+      background:$gray-light;
+    }
+  }
+}
 
 
 

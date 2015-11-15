@@ -8,6 +8,9 @@
 }
 
 .project-header {
-  border-bottom:1px solid $nav-tabs-border-color;
   @extend .p-b-md;
+}
+
+.hypothesis-row-header {
+  border-bottom:1px solid $nav-tabs-border-color;
 }

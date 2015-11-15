@@ -105,59 +105,15 @@ HypothesisContainerList = React.createClass({
   },
 
   renderFullView() {
+    console.log(this.data.learningCard)
     return (
-      <div className="">
-        <nav className="navbar navbar-light bg-faded" hidden>
-
-          <div className="form-inline navbar-form pull-right">
-            <button onClick={this.toggleListView} className="btn btn-secondary-outline btn-sm">
-              <i className="fa fa-times"></i>
-            </button>
-          </div>
-        </nav>
-
-        <div className="card-block">
-          <h5 className="m-b-md" href="#">{this.props.hypothesis.name}</h5>
-
-
-          {
-            this.data.TestCards.length > 0 ? null : <AddTestCardForm hypothesis={this.props.hypothesis} show={true} />
-          }
-
-          {
-            this.data.TestCards.map((testCard) => {
-              return (
-              <div key={testCard._id}>
-                  <div className="row">
-                    <div className="col-md-4">
-                      <TestCardHeader testCard={testCard}/>
-                    </div>
-                    <div className="col-md-4">
-                      <TestCardComponent testCard={testCard}/>
-                    </div>
-                    <div className="col-md-4">
-                      {
-                        this.data.learningCard.map(function(learningCard){
-                          return (
-                          <LearningCard key={learningCard._id} learningCard={learningCard} />
-                          )
-                        })
-                      }
-                    </div>
-                  </div>
-                  <hr />
-                  <div className="row">
-                    <div className="col-md-4">
-                      <button onClick={this.toggleListView}  className="btn btn-primary-outline m-r">save</button>
-                      <button onClick={this.toggleListView}  className="btn btn-secondary-outline m-r">cancel</button>
-                    </div>
-                  </div>
-              </div>
-              )
-            })
-          }
-
-        </div>
+      <div className="hypothesis-row">
+      <EditHypothesis
+        hypothesis={this.props.hypothesis}
+        testcards={this.data.TestCards}
+        learningcards={this.data.learningCard}
+        toggleListView={this.toggleListView}
+        />
       </div>
     )
   },
@@ -167,6 +123,64 @@ HypothesisContainerList = React.createClass({
   }
 });
 
+
+
+
+
+
+
+// <div className="">
+//   <nav className="navbar navbar-light bg-faded" hidden>
+//
+//     <div className="form-inline navbar-form pull-right">
+//       <button onClick={this.toggleListView} className="btn btn-secondary-outline btn-sm">
+//         <i className="fa fa-times"></i>
+//       </button>
+//     </div>
+//   </nav>
+//
+//   <div className="card-block">
+//     <h5 className="m-b-md" href="#">{this.props.hypothesis.name}</h5>
+//
+//
+//     {
+//       this.data.TestCards.length > 0 ? null : <AddTestCardForm hypothesis={this.props.hypothesis} show={true} />
+//     }
+//
+//     {
+//       this.data.TestCards.map((testCard) => {
+//         return (
+//         <div key={testCard._id}>
+//             <div className="row">
+//               <div className="col-md-5">
+//                 <TestCardHeader testCard={testCard}/>
+//
+//                 <TestCardComponent testCard={testCard}/>
+//               </div>
+//               <div className="col-md-5">
+//                 {
+//                   this.data.learningCard.map(function(learningCard){
+//                     return (
+//                     <LearningCard key={learningCard._id} learningCard={learningCard} />
+//                     )
+//                   })
+//                 }
+//               </div>
+//             </div>
+//             <hr />
+//             <div className="row">
+//               <div className="col-md-4">
+//                 <button onClick={this.toggleListView}  className="btn btn-primary-outline m-r">save</button>
+//                 <button onClick={this.toggleListView}  className="btn btn-secondary-outline m-r">cancel</button>
+//               </div>
+//             </div>
+//         </div>
+//         )
+//       })
+//     }
+//
+//   </div>
+// </div>
 
 
 

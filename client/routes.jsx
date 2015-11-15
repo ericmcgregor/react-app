@@ -23,7 +23,7 @@ let projectRoutes = FlowRouter.group({
 projectRoutes.route('/', {
   name:'projects-list',
   action:function(){
-    ReactLayout.render(AppLayout, {content: <ProjectLoader />})
+    ReactLayout.render(AppLayout, {})
   }
 })
 projectRoutes.route('/:projectId', {

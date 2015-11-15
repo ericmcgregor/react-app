@@ -37,6 +37,13 @@ ProjectContainer = React.createClass({
 
       <ProjectHeader project={this.props.project} shouldRender={this.shouldRenderForm("nav")} />
 
+      <div className="hypothesis-row-header">
+        <div className="row">
+        <div className="col-md-5">hypothesis</div>
+        <div className="col-md-3">test</div>
+        <div className="col-md-3">results</div>
+        </div>
+      </div>
       {
         this.data.hypothesis.map(function(hypothesis){
           return <HypothesisContainerList key={hypothesis._id} hypothesis={hypothesis} />

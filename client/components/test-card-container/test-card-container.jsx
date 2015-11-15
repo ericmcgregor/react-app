@@ -39,10 +39,9 @@ TestCardContainer = React.createClass({
 
         <div className="card-block">
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-8">
               <TestCardHeader testCard={this.props.testCard}/>
-            </div>
-            <div className="col-md-4">
+
               <TestCardComponent testCard={this.props.testCard}/>
             </div>
             <div className="col-md-4">

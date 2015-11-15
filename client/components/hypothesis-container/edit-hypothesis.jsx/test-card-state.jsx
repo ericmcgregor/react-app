@@ -1,4 +1,7 @@
 TestCardStateSelect = React.createClass({
+  propTypes: {
+    testCard: React.PropTypes.object.isRequired
+  },
   getInitialState() {
     let inactive = 'btn btn-secondary ';
     let active = inactive+'active';
