@@ -33,7 +33,7 @@ ProjectContainer = React.createClass({
 
   render() {
     return (
-    <div className="project-container">
+    <div className="container-fluid project-container">
 
       <ProjectHeader project={this.props.project} shouldRender={this.shouldRenderForm("nav")} />
 

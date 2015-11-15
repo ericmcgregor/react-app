@@ -12,6 +12,7 @@ html, body {
 body {
   display:flex;
   flex-direction: column;
+  overflow:hidden;
 }
 
 
@@ -21,6 +22,7 @@ body {
   position:absolute;
   height:100%;
   width:100%;
+  overflow:hidden;
 
   #global-nav-layout {
   }
@@ -28,6 +30,7 @@ body {
     position:relative;
     display:flex;
     flex-grow:1;
+    overflow:hidden;
 
       #side-nav-layout {
         display:flex;
@@ -45,7 +48,10 @@ body {
         display:flex;
         flex-direction: column;
         overflow: hidden;
-
+        > div {
+          overflow: hidden;
+          overflow-y:scroll;
+        }
       }
 
   }

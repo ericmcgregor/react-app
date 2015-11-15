@@ -22,7 +22,6 @@ NavMenuItem = React.createClass({
 
     return (
       <li key={project._id} className={classes}>
-        <span className="label label-default label-pill pull-right" onClick={this.removeProject}>x</span>
         <a href={'/projects/'+project._id}>
           {project.name}
         </a>

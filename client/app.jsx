@@ -6,7 +6,7 @@ Meteor.subscribe('people');
 
 
 // App component - represents the whole app
-App = React.createClass({
+ProjectLoader = React.createClass({
 
   // This mixin makes the getMeteorData method work
   mixins: [ReactMeteorData],
@@ -19,16 +19,9 @@ App = React.createClass({
     }
   },
 
-
-  renderContent() {
-    return <ProjectContainer key={this.data.project._id} project={this.data.project} />
-  },
-
   render() {
     return (
-      <div>
-        {this.data.project? this.renderContent() : <p>Loading...</p>}
-      </div>
+      <ProjectContainer key={this.data.project._id} project={this.data.project} />
     );
   }
 });
@@ -56,7 +49,9 @@ AppLayout = React.createClass({
 
 
         <div id="main-content-layout">
-          {this.props.content}
+          <div>
+            {this.props.content}
+          </div>
         </div>
 
         </div>
