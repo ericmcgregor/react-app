@@ -31,11 +31,19 @@ EditHypothesis = React.createClass({
       $set:state
     });
   },
+  removeHypothesis() {
+    Hypothesis.remove(this.props.hypothesis._id);
+  },
   render(){
     return(
       <div className="">
-          <nav className="navbar navbar-light bg-faded">
+          <nav className="navbar navbar-light bg-faded m-b-md">
+            <span className="navbar-brand">edit hypothesis</span>
+
             <div className="form-inline navbar-form pull-right">
+              <button onClick={this.removeHypothesis} className="btn btn-secondary-outline btn-sm m-r">
+                delete <i className="fa fa-trash"></i>
+              </button>
               <button onClick={this.props.toggleListView} className="btn btn-secondary-outline btn-sm">
                 close <i className="fa fa-times"></i>
               </button>

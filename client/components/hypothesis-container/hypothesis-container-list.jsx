@@ -12,9 +12,9 @@ HypothesisListItem = React.createClass({
   render() {
     return (
       <div className="hypothesis-row">
-      <div className="row">
+      <div className="row" onClick={this.props.toggleListView}>
         <div className="col-md-5 title">
-          <h6 className="m-a-0" onClick={this.props.toggleListView}>{this.props.hypothesis.name}</h6>
+          <h6 className="m-a-0" >{this.props.hypothesis.name}</h6>
         </div>
         <div className="col-md-3">
           {
@@ -34,6 +34,10 @@ HypothesisListItem = React.createClass({
               )
             })
           }
+
+
+        </div>
+        <div className="col-md-1 row-options">
           {
             this.props.data.TestCards.map(function(testCard){
               return (
@@ -41,20 +45,20 @@ HypothesisListItem = React.createClass({
               )
             })
           }
-
-        </div>
-        <div className="col-md-1 row-options">
-          <div className="btn-group" role="group" aria-label="">
-            <button type="button" className="btn btn-sm btn-secondary">
-              <i onClick={this.props.removeHypothesis} className="fa fa-trash"></i>
-            </button>
-          </div>
         </div>
       </div>
       </div>
     )
   }
 });
+
+// <div className="col-md-1 row-options">
+//   <div className="btn-group" role="group" aria-label="">
+//     <button type="button" className="btn btn-sm btn-secondary">
+//       <i onClick={this.props.removeHypothesis} className="fa fa-trash"></i>
+//     </button>
+//   </div>
+// </div>
 
 HypothesisContainerList = React.createClass({
   mixins: [ReactMeteorData],

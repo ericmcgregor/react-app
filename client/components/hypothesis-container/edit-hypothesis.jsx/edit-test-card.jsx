@@ -30,10 +30,10 @@ EditTestCard = React.createClass({
     return (
       <div id="edit-test-card">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-6">
             <form>
               <fieldset className="form-group">
-                <label htmlFor="testName">Test</label>
+                <label htmlFor="testName">Test Name:</label>
                 <textarea
                   className="form-control"
                   id="testName"
