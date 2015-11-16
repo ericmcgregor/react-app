@@ -12,7 +12,7 @@
   // });
 FlowRouter.route('/', {
   action(params) {
-    ReactLayout.render(AppLayout, {content: <ProjectLoader />})
+    ReactLayout.render(AppLayout, {})
   }
 });
 
