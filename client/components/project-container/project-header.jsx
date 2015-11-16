@@ -1,6 +1,9 @@
 ProjectHeader = React.createClass({
   removeProject() {
-    Projects.remove(this.props.project._id);
+    FlowRouter.go('/projects');
+    
+    Projects.remove(this.props.project._id, function(err, id){
+    });
   },
 
   handleChangeNavTitle(key, value, evt) {

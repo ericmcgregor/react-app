@@ -28,7 +28,6 @@ ProjectLoader = React.createClass({
 
 AppLayout = React.createClass({
   render(){
-    console.log(this.props.content)
     return (
       <div id="app-container">
 

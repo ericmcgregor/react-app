@@ -11,16 +11,16 @@ SideNav = React.createClass({
   },
   render(){
     return(
-      <div id="side-nav-layout" className={this.state.open ? 'null' : 'close'}>
+      <div id="side-nav-layout" className={this.state.open ? 'null' : 'closed'}>
 
-      <div className="side-nav">
-        <div className="side-nav-menu p-a">
-          <NavMenu />
+        <div className="side-nav">
+          <div className="side-nav-menu p-a">
+            <NavMenu />
+          </div>
+          <div className="side-nav-footer">
+            <button onClick={this.close} className="btn btn-block btn-secondary-outline"><i className={this.state.open ? 'fa fa-chevron-left' : 'fa fa-chevron-right'}></i></button>
+          </div>
         </div>
-        <div className="side-nav-footer">
-          <button onClick={this.close} className="btn btn-sm btn-secondary-outline">close</button>
-        </div>
-      </div>
     </div>
     )
   }
@@ -54,13 +54,13 @@ NavMenu = React.createClass({
     </ul>
     <br />
 
-    <ToggleAddProjectForm />
-
+    <a href="/new-project" className="btn btn-outline-secondary">New Project</a>
 
     </div>
 
   }
 });
+//<ToggleAddProjectForm />
 
 ToggleAddProjectForm = React.createClass({
   getInitialState(){

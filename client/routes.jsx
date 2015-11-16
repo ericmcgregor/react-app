@@ -16,6 +16,12 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/new-project', {
+  action(params) {
+    ReactLayout.render(AppLayout, {content: <NewProjectView />})
+  }
+});
+
 let projectRoutes = FlowRouter.group({
   prefix: "/projects"
 });
