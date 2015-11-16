@@ -35,6 +35,6 @@ projectRoutes.route('/', {
 projectRoutes.route('/:projectId', {
   name:'project-details',
   action:function(params){
-    ReactLayout.render(AppLayout, {content: <ProjectLoader />})
+    ReactLayout.render(AppLayout, {content: <ProjectDetailView />})
   }
 })
