@@ -2,12 +2,12 @@ Projects = new Mongo.Collection('projects');
 
 Projects.allow({
   insert: function(userId, project) {
-    return true;
+    return !! userId;
   },
   update: function(userId, project, fields, modifier) {
-    return true;
+    return !! userId;
   },
   remove: function(userId, project) {
-    return true;
+    return !! userId;
   }
 });

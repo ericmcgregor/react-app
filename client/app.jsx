@@ -38,6 +38,9 @@ AppLayout = React.createClass({
                 <a className="nav-link" href="/projects">Projects <span className="sr-only">(current)</span></a>
               </li>
             </ul>
+            <ul className="nav navbar-nav pull-right">
+              <AccountsUIWrapper />
+            </ul>
           </nav>
         </div>
 
