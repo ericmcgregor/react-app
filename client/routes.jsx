@@ -10,6 +10,23 @@
   //       React.render(<App />, document.getElementById("render-target"));
   //     }
   // });
+
+
+function loginRedirect(context, redirect) {
+  if(!Meteor.userId() && context.path !== '/login') {
+    console.log(context)
+    redirect('/login')
+  }
+}
+FlowRouter.triggers.enter([loginRedirect]);
+
+FlowRouter.route('/login', {
+  action(params) {
+    ReactLayout.render(LoginView, {})
+  }
+
+});
+
 FlowRouter.route('/', {
   action(params) {
     ReactLayout.render(AppLayout, {})
