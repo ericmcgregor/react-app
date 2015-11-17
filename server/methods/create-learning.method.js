@@ -5,9 +5,9 @@ Meteor.methods({
     let testCard = TestCard.findOne(testCardId);
 
       let learning = {
+            'projectId':testCard.projectId,
             'testCardId':testCard._id,
             'hypothesiId':testCard.hypothesiId,
-            'hypothesis':testCard.hypothesis,
             'observation':'', //we observed...
             'learning':'', //unclear results...
             'next_steps':'', //continue on...

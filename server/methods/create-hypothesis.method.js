@@ -7,7 +7,6 @@ Meteor.methods({
     let hypothesi = {
         'projectId':projectId,
         'name': name,
-        'test_version':0,
       }
 
       let hypothesiId = Hypothesis.insert(hypothesi);
