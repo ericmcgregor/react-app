@@ -14,10 +14,13 @@
 
 function loginRedirect(context, redirect) {
   if(!Meteor.userId() && context.path !== '/login') {
-    console.log(context)
-    redirect('/login')
+    return redirect('/login')
+  }
+  if(Meteor.userId() && context.path == '/login') {
+    return redirect('/projects')
   }
 }
+
 FlowRouter.triggers.enter([loginRedirect]);
 
 FlowRouter.route('/login', {
