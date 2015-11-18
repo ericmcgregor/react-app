@@ -1,6 +1,6 @@
-Meteor.startup(function(){
-  Migrations.migrateTo('latest');
-})
+// Meteor.startup(function(){
+//   Migrations.migrateTo('latest');
+// })
 
 // Learnings.find()
 // .forEach(function(learning){

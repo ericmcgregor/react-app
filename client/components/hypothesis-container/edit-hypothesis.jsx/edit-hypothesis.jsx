@@ -41,9 +41,7 @@ EditHypothesis = React.createClass({
             <span className="navbar-brand">edit hypothesis</span>
 
             <div className="form-inline navbar-form pull-right">
-              <button onClick={this.removeHypothesis} className="btn btn-secondary-outline btn-sm m-r">
-                delete <i className="fa fa-trash"></i>
-              </button>
+              <DeleteButton handleDelete={this.removeHypothesis}/>
               <button onClick={this.props.toggleListView} className="btn btn-secondary-outline btn-sm">
                 close <i className="fa fa-times"></i>
               </button>

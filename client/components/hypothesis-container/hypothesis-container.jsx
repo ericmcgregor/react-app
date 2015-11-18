@@ -30,7 +30,7 @@ HypothesisContainer = React.createClass({
           })
         }
 
-        <AddHypothesisForm view="body" show={this.shouldRenderForm()}/>
+        <AddHypothesisForm view="body" show={true}/>
 
       </div>
     )
