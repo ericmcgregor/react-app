@@ -49,7 +49,7 @@ let projectRoutes = FlowRouter.group({
 projectRoutes.route('/', {
   name:'projects-list',
   action:function(){
-    ReactLayout.render(AppLayout, {})
+    ReactLayout.render(ProjectListView)
   }
 })
 projectRoutes.route('/:projectId', {
