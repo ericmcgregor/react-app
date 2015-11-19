@@ -69,9 +69,8 @@ body {
 #side-nav-layout {
   &.closed {
     .side-nav {
-      width:50px;
+      width:75px;
       overflow:hidden;
-      background:$gray-light;
     }
   }
 }

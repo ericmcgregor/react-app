@@ -6,7 +6,6 @@ GlobalNav = React.createClass({
         <nav className="navbar navbar-light bg-faded">
           <ul className="nav navbar-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="/projects">Projects <span className="sr-only">(current)</span></a>
             </li>
           </ul>
           <ul className="nav navbar-nav pull-right">
@@ -17,3 +16,5 @@ GlobalNav = React.createClass({
     )
   }
 })
+
+//<a className="nav-link" href="/projects">Projects <span className="sr-only">(current)</span></a>

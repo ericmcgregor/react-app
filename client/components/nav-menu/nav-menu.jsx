@@ -1,7 +1,13 @@
 SideNav = React.createClass({
-  getInitialState() {
+  getDefaultProps(){
     return {
       open:true
+    }
+  },
+  getInitialState() {
+    let open = this.props.open ? this.props.open : false;
+    return {
+      open:open
     }
   },
   close(){
@@ -9,18 +15,46 @@ SideNav = React.createClass({
       open:!this.state.open
     })
   },
+  renderOpen() {
+    return (
+      <div className="side-nav">
+        <div className="side-nav-footer">
+          <nav className="navbar ">
+            <button className="navbar-toggler" >
+              <i
+                className="fa fa-bars"
+                onClick={this.close} />
+            </button>
+            <span className="navbar-brand">Projects</span>
+          </nav>
+        </div>
+        <div className="side-nav-menu p-a">
+          <NavMenu />
+        </div>
+
+      </div>
+    )
+  },
+  renderClosed() {
+    return(
+      <div className="side-nav">
+        <div className="side-nav-footer">
+          <nav className="navbar ">
+            <button className="navbar-toggler" >
+              <i
+                className="fa fa-bars"
+                onClick={this.close} />
+            </button>
+          </nav>
+
+        </div>
+      </div>
+    )
+  },
   render(){
     return(
       <div id="side-nav-layout" className={this.state.open ? 'null' : 'closed'}>
-
-        <div className="side-nav">
-          <div className="side-nav-menu p-a">
-            <NavMenu />
-          </div>
-          <div className="side-nav-footer">
-            <button onClick={this.close} className="btn btn-block btn-secondary-outline"><i className={this.state.open ? 'fa fa-chevron-left' : 'fa fa-chevron-right'}></i></button>
-          </div>
-        </div>
+        {this.state.open==true? this.renderOpen() : this.renderClosed()}
     </div>
     )
   }
@@ -41,20 +75,30 @@ NavMenu = React.createClass({
 
 
   changePath(id) {
-    FlowRouter.go('project-details', {projectId:id, test:'test'});
+    FlowRouter.go('project-details', {projectId:id});
   },
 
 
   render() {
-    return <div className="layout layout-column layout-fill">
-    <ul className="list-group">
-      {this.data.projects.map((project)=>{
-        return <NavMenuItem key={project._id} project={project}/>
-      })}
-    </ul>
-    <br />
+    return <div>
 
-    <a href="/new-project" className="btn btn-outline-secondary">New Project</a>
+      <div className="dropdown-menu" style={{position:'static',display:'block'}}>
+        <h6 className="dropdown-header">My Projects</h6>
+
+        {this.data.projects.map((project)=>{
+          return (
+            <a key={project._id} href={'/projects/'+project._id} className="dropdown-item">{project.name}</a>
+          )
+        })}
+        <div className="dropdown-divider" />
+          <a className="dropdown-item" href="/projects">
+            Project Dashboard
+          </a>
+        <div className="dropdown-divider" />
+        <a className="dropdown-item" href="/new-project">
+          Create Project
+        </a>
+      </div>
 
     </div>
 

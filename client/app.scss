@@ -1,2 +1,6 @@
 $enable-flex: true;
 @import "{ericmcgregor:bootstrap4scss}/bootstrap";
+
+*:focus, .btn:focus {
+  outline: none;
+}

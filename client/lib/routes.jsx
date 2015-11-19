@@ -42,19 +42,20 @@ FlowRouter.route('/new-project', {
   }
 });
 
-let projectRoutes = FlowRouter.group({
-  prefix: "/projects"
-});
+// let projectRoutes = FlowRouter.group({
+//   name: 'projects',
+//   prefix: "/projects"
+// });
 
-projectRoutes.route('/', {
+FlowRouter.route('/projects', {
   name:'projects-list',
   action:function(){
     ReactLayout.render(ProjectListView)
   }
 })
-projectRoutes.route('/:projectId', {
+FlowRouter.route('/projects/:projectId', {
   name:'project-details',
   action:function(params){
-    ReactLayout.render(AppLayout, {content: <ProjectDetailView />})
+    ReactLayout.render(AppLayout, {content: <ProjectDetailView projectId={params.projectId}/>})
   }
 })

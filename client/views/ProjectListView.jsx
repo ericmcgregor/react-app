@@ -28,6 +28,7 @@ ProjectListView = React.createClass({
         <GlobalNav />
 
         <div id="app-content-layout">
+          <SideNav open={false}/>
 
           <div id="main-content-layout">
             <div>
