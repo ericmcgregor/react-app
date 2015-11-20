@@ -17,6 +17,12 @@ EditHypothesis = React.createClass({
       name:this.props.hypothesis.name
     }
   },
+  mixins: [
+    OnClickOutside
+  ],
+  handleClickOutside: function(evt) {
+    this.props.toggleListView();
+  },
   handleChange(key, value, evt) {
     let state = {}
     state[key] = value ? value : evt.target.value;

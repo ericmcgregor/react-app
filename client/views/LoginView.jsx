@@ -57,7 +57,7 @@ LoginView = React.createClass({
                               onChange={this.handleChange.bind(this, 'password', null)}
                               placeholder="Password" />
                           </fieldset>
-                          <span onClick={this.handleLogin} className="btn btn-primary">Login</span>
+                          <button type="button" onClick={this.handleLogin} className="btn btn-primary">Login</button>
                         </form>
                       </div>
                     </div>

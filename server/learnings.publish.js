@@ -25,18 +25,25 @@ Meteor.publish('learnings', function(options={}, searchString) {
 Learnings.before.insert(function (userId, doc) {
     doc.created = Date.unow();
 });
+Learnings.before.update(function(userId, learning, fieldNames, modifier, options){
+  if(fieldNames[0]==='result'){
+    if(modifier.$set.result === learning.result) {
+      modifier.$set.result='';
+    }
+  }
+});
 Learnings.after.update(function(userId, learning, fieldNames, modifier, options){
   // TestCard.remove({hypothesiId:hypothesis._id});
-  let state = learning.result;
-
-  if(fieldNames[0]==='result' && !modifier.$set.result) {
-    state = 'measure';
-  }
-  TestCard.update({
-    _id:{$eq:learning.testCardId}
-  }, {
-    $set:{
-      state:state
-    }
-  });
+  // let state = learning.result;
+  //
+  // if(fieldNames[0]==='result' && !modifier.$set.result) {
+  //   state = 'measure';
+  // }
+  // TestCard.update({
+  //   _id:{$eq:learning.testCardId}
+  // }, {
+  //   $set:{
+  //     state:state
+  //   }
+  // });
 });
