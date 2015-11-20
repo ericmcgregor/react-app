@@ -2,5 +2,17 @@ $enable-flex: true;
 @import "{ericmcgregor:bootstrap4scss}/bootstrap";
 
 *:focus, .btn:focus {
-  outline: none;
+  outline: none!important;
 }
+// .btn {
+//   &:focus {
+//     background-color: #fff;
+//   }
+// }
+// .btn-group {
+//   > .btn:not(.active) {
+//     @include hover {
+//       background:#fff;
+//     }
+//   }
+// }

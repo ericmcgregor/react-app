@@ -1,0 +1,8 @@
+{
+  "name": "hypothesis-test-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "react-onclickoutside": "~4.5.0"
+  },
+  "private": true
+}

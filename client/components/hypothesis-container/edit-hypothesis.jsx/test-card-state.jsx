@@ -24,10 +24,11 @@ TestCardStateSelect = React.createClass({
 
   render() {
     return (
-        <div className="btn-group input-group btn-group-justified" role="group" aria-label="Basic example">
+        <div className="btn-group btn-group-justified" aria-label="Basic example">
           <button type="button" onClick={this.handleChange.bind(this, 'state', 'backlog')} className={this.props.testCard.state=="backlog" ? this.state.active : this.state.inactive }>backlog</button>
           <button type="button"  onClick={this.handleChange.bind(this, 'state', 'build')} className={this.props.testCard.state=="build" ? this.state.active : this.state.inactive }>build</button>
-          <button type="button"  onClick={this.handleChange.bind(this, 'state', 'measure')} className={this.props.testCard.state=="measure" ? this.state.active : this.state.inactive }>measure</button>
+            <button type="button"  onClick={this.handleChange.bind(this, 'state', 'measure')} className={this.props.testCard.state=="measure" ? this.state.active : this.state.inactive }>measure</button>
+          <button type="button"  onClick={this.handleChange.bind(this, 'state', 'complete')} className={this.props.testCard.state=="complete" ? this.state.active : this.state.inactive }>complete</button>
         </div>
     )
   }
