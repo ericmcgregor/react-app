@@ -31,4 +31,5 @@ kadira:flow-router
 kadira:react-layout
 fortawesome:fontawesome
 ericmcgregor:bootstrap4scss
+ericmcgregor:reactplugins
 percolate:migrations
