@@ -23,6 +23,8 @@ body {
   overflow:hidden;
 
   #global-nav-layout {
+    > nav {
+    }
   }
   #app-content-layout {
     position:relative;
@@ -44,8 +46,11 @@ body {
         overflow: hidden;
         width:100%;
         > div {
+        }
+        > div.scrollWrapper {
           overflow: hidden;
           overflow-y:scroll;
+          flex:1;
         }
       }
 

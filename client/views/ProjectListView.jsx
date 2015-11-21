@@ -10,6 +10,11 @@ ProjectListView = React.createClass({
       tests:TestCard.find().fetch(),
     }
   },
+  componentDidMount() {
+    Session.set({
+      navtitle:'Projects'
+    })
+  },
   hypothesisCount(id) {
     return _.where(this.data.hypothesis, {projectId:id}).length;
   },
@@ -23,55 +28,44 @@ ProjectListView = React.createClass({
   },
   render(){
     return(
-      <div id="app-container">
 
-        <GlobalNav />
-
-        <div id="app-content-layout">
-          <SideNav open={false}/>
-
-          <div id="main-content-layout">
-            <div>
               <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-6">
-                project
-              </div>
-              <div className="col-md-2">
-                  hypothesis
-              </div>
-              <div className="col-md-2">
-                  tests
-              </div>
-              <div className="col-md-2">
-                  completed
-              </div>
-            </div>
-            {
-              this.data.projects.map((project) => {
-                return(
-                  <div className="row" key={project._id}>
-                    <div className="col-md-6">
-                      <a href={'/projects/'+project._id}>{project.name}</a>
-                    </div>
-                    <div className="col-md-2">
-                      {this.hypothesisCount(project._id)}
-                    </div>
-                    <div className="col-md-2">
-                      {this.testCount(project._id)}
-                    </div>
-                    <div className="col-md-2">
-                      {this.testCompleted(project._id)}
-                    </div>
+                <div className="row">
+                  <div className="col-md-6">
+                    project
                   </div>
-                )
-              })
-            }
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                  <div className="col-md-2">
+                      hypothesis
+                  </div>
+                  <div className="col-md-2">
+                      tests
+                  </div>
+                  <div className="col-md-2">
+                      completed
+                  </div>
+                </div>
+                {
+                  this.data.projects.map((project) => {
+                    return(
+                      <div className="row" key={project._id}>
+                        <div className="col-md-6">
+                          <a href={'/projects/'+project._id}>{project.name}</a>
+                        </div>
+                        <div className="col-md-2">
+                          {this.hypothesisCount(project._id)}
+                        </div>
+                        <div className="col-md-2">
+                          {this.testCount(project._id)}
+                        </div>
+                        <div className="col-md-2">
+                          {this.testCompleted(project._id)}
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+              </div>
+
 
 
     )

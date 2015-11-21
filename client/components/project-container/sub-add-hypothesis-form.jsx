@@ -47,7 +47,7 @@ AddHypothesisForm = React.createClass({
       return (
         <div className="card-block">
             <div className="input-group">
-              <input ref="editFocus" onKeyUp={this.handleKeyUp} type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your hypothesis?" />
+              <input onKeyUp={this.handleKeyUp} type="text" className="form-control" value={this.state.name} onChange={this.handleChange} placeholder="What is your hypothesis?" />
               <span className="input-group-btn">
                   <button className="btn btn-primary-outline" onClick={this.createHypothesis}><i className="fa fa-flask"></i> Add</button>
               </span>

@@ -4,30 +4,10 @@ SideNav = React.createClass({
       open:true
     }
   },
-  getInitialState() {
-    let open = this.props.open ? this.props.open : false;
-    return {
-      open:open
-    }
-  },
-  close(){
-    this.setState({
-      open:!this.state.open
-    })
-  },
   renderOpen() {
     return (
       <div className="side-nav">
-        <div className="side-nav-footer">
-          <nav className="navbar ">
-            <button className="navbar-toggler" >
-              <i
-                className="fa fa-bars"
-                onClick={this.close} />
-            </button>
-            <span className="navbar-brand">Projects</span>
-          </nav>
-        </div>
+
         <div className="side-nav-menu p-a">
           <NavMenu />
         </div>
@@ -39,7 +19,7 @@ SideNav = React.createClass({
     return(
       <div className="side-nav">
         <div className="side-nav-footer">
-          <nav className="navbar ">
+          <nav className="navbar  navbar-light bg-faded">
             <button className="navbar-toggler" >
               <i
                 className="fa fa-bars"
@@ -53,8 +33,8 @@ SideNav = React.createClass({
   },
   render(){
     return(
-      <div id="side-nav-layout" className={this.state.open ? 'null' : 'closed'}>
-        {this.state.open==true? this.renderOpen() : this.renderClosed()}
+      <div id="side-nav-layout" className={this.props.open ? 'null' : 'closed'}>
+        {this.props.open==true? this.renderOpen() : this.renderClosed()}
     </div>
     )
   }
@@ -72,13 +52,9 @@ NavMenu = React.createClass({
     }
   },
 
-
-
   changePath(id) {
     FlowRouter.go('project-details', {projectId:id});
   },
-
-
   render() {
     return <div>
 
@@ -169,3 +145,15 @@ ToggleAddProjectForm = React.createClass({
 
 //<span className="label label-default label-pill pull-right">14</span>
 // href={'/projects/'+project._id}
+
+
+// <div className="side-nav-footer">
+//   <nav className="navbar navbar-light bg-faded">
+//     <button className="navbar-toggler" >
+//       <i
+//         className="fa fa-bars"
+//         onClick={this.close} />
+//     </button>
+//     <span className="navbar-brand">Projects</span>
+//   </nav>
+// </div>

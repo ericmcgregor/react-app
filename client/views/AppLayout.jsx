@@ -1,18 +1,31 @@
 AppLayout = React.createClass({
+
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    return {
+      sidenav: Session.get('sidenav'),
+    }
+  },
+
   render(){
+    console.log(this.data.sidenav)
     return (
       <div id="app-container">
 
-        <GlobalNav />
 
 
       <div id="app-content-layout">
+        {
+          this.data.sidenav ? <SideNav open={this.data.sidenav}/> : null
+        }
 
-        <SideNav />
 
 
         <div id="main-content-layout">
-          <div>
+          <GlobalNav />
+
+          <div className="scrollWrapper">
             {this.props.content}
           </div>
         </div>

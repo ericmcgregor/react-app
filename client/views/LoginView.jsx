@@ -28,7 +28,7 @@ LoginView = React.createClass({
             <div>
               <div className="container">
                 <div className="row m-t-lg">
-                  <div className="col-md-6 col-md-offset-3">
+                  <div className="col-md-6 col-md-offset-3 col-xs-12">
                     <div className="card">
                       <div className="card-block">
                         <h4>Login</h4>

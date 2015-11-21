@@ -50,12 +50,19 @@ FlowRouter.route('/new-project', {
 FlowRouter.route('/projects', {
   name:'projects-list',
   action:function(){
-    ReactLayout.render(ProjectListView)
+    ReactLayout.render(AppLayout, {content:<ProjectListView />})
   }
 })
 FlowRouter.route('/projects/:projectId', {
   name:'project-details',
   action:function(params){
     ReactLayout.render(AppLayout, {content: <ProjectDetailView projectId={params.projectId}/>})
+  }
+})
+FlowRouter.route('/projects/:projectId/:hypothesisId', {
+  name:'project-details-hypothesis',
+  action:function(params){
+    console.log(params)
+    ReactLayout.render(AppLayout, {content: <HypothesisDetailView hypothesisId={params.hypothesisId}/>})
   }
 })
