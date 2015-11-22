@@ -36,33 +36,48 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/new-project', {
+
+
+let projectRoutes = FlowRouter.group({
+  name: 'projects',
+  prefix: "/projects"
+});
+
+projectRoutes.route('/', {
+  name:'projects-list',
+  action:function(){
+    ReactLayout.render(AppLayout, {content:<ProjectListView />})
+  },
+  triggersEnter:[function(){
+    Session.set({'navtitle':'Projects'})
+  }]
+})
+projectRoutes.route('/new-project', {
+  name:'new-project',
   action(params) {
     ReactLayout.render(AppLayout, {content: <NewProjectView />})
   }
 });
 
-// let projectRoutes = FlowRouter.group({
-//   name: 'projects',
-//   prefix: "/projects"
-// });
 
-FlowRouter.route('/projects', {
-  name:'projects-list',
-  action:function(){
-    ReactLayout.render(AppLayout, {content:<ProjectListView />})
-  }
-})
+
+
 FlowRouter.route('/projects/:projectId', {
   name:'project-details',
   action:function(params){
     ReactLayout.render(AppLayout, {content: <ProjectDetailView projectId={params.projectId}/>})
-  }
+  },
+  triggersEnter:[function(context){
+    let project = Projects.findOne(context.params.projectId)
+    Session.set({'navtitle':project.name})
+  }]
 })
 FlowRouter.route('/projects/:projectId/:hypothesisId', {
   name:'project-details-hypothesis',
   action:function(params){
-    console.log(params)
     ReactLayout.render(AppLayout, {content: <HypothesisDetailView hypothesisId={params.hypothesisId}/>})
-  }
+  },
+  triggersEnter:[function(context){
+    Session.set({'navtitle':'Edit Hypothesis'})
+  }]
 })

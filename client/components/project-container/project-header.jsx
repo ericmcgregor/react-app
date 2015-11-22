@@ -1,7 +1,7 @@
 ProjectHeader = React.createClass({
   removeProject() {
     FlowRouter.go('/projects');
-    
+
     Projects.remove(this.props.project._id, function(err, id){
     });
   },
@@ -21,10 +21,8 @@ ProjectHeader = React.createClass({
     return (
       <div className="project-header m-y">
         <div className="row">
-        <div className="col-md-6">
-          <EditNavTitleMixin title={this.props.project.name} handleChange={this.handleChangeNavTitle.bind(this, 'name', null)} />
-        </div>
-        <div className="col-md-6">
+
+        <div className="col-md-12">
           <form className="form-inline navbar-form pull-right m-l">
               <div className="form-group">
                 <div className="btn-group pull-right btn-group" role="group" aria-label="Third group">
@@ -33,7 +31,6 @@ ProjectHeader = React.createClass({
               </div>
             </form>
 
-            <AddHypothesisForm project={this.props.project} view="nav" show={this.props.shouldRender} />
 
         </div>
         </div>
@@ -41,3 +38,7 @@ ProjectHeader = React.createClass({
     )
   }
 })
+// <AddHypothesisForm project={this.props.project} view="nav" show={this.props.shouldRender} />
+// <div className="col-md-6">
+//   <EditNavTitleMixin title={this.props.project.name} handleChange={this.handleChangeNavTitle.bind(this, 'name', null)} />
+// </div>

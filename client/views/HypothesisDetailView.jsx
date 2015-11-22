@@ -15,9 +15,7 @@ HypothesisDetailView = React.createClass({
     }
   },
   componentDidMount() {
-    Session.set({
-      navtitle:'edit hypothesis'
-    })
+
   },
   render() {
     console.log(this.data)

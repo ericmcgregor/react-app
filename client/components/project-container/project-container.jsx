@@ -33,13 +33,10 @@ ProjectContainer = React.createClass({
 
   render() {
     return (
-    <div className="container-fluid project-container">
-
-      <ProjectHeader project={this.props.project} shouldRender={this.shouldRenderForm("nav")} />
-
+    <div className="container-fluid project-container m-y">
 
       <HypothesisContainer hypothesis={this.data.hypothesis}/>
-
+        <ProjectHeader project={this.props.project} shouldRender={this.shouldRenderForm("nav")} />
 
     </div>
   )
@@ -47,6 +44,7 @@ ProjectContainer = React.createClass({
 
 
 });
+// <ProjectHeader project={this.props.project} shouldRender={this.shouldRenderForm("nav")} />
 
 
 

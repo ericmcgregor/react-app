@@ -12,10 +12,10 @@ HypothesisItem = React.createClass({
     }
   },
   goDetail(hypothesis) {
-    console.log('test')
     FlowRouter.go('project-details-hypothesis', {projectId:hypothesis.projectId, hypothesisId:hypothesis._id})
   },
   render() {
+    if(!this.data.TestCard) return (<div></div>)
     return(
       <div className="card" onClick={this.goDetail.bind(this, this.props.hypothesis)}>
         <div className="card-block">

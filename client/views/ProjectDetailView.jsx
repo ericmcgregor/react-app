@@ -6,9 +6,7 @@ ProjectDetailView = React.createClass({
   // This mixin makes the getMeteorData method work
   mixins: [ReactMeteorData],
   componentDidMount() {
-    Session.set({
-      navtitle:this.data.project.name
-    })
+
   },
   // Loads items from the Tasks collection and puts them on this.data.tasks
   getMeteorData() {

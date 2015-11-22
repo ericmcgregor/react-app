@@ -11,9 +11,7 @@ ProjectListView = React.createClass({
     }
   },
   componentDidMount() {
-    Session.set({
-      navtitle:'Projects'
-    })
+
   },
   hypothesisCount(id) {
     return _.where(this.data.hypothesis, {projectId:id}).length;
@@ -64,6 +62,9 @@ ProjectListView = React.createClass({
                     )
                   })
                 }
+                <a className="" href="/projects/new-project">
+                  Create Project
+                </a>
               </div>
 
 

@@ -43,16 +43,7 @@ EditHypothesis = React.createClass({
   render(){
     return(
       <div className="">
-          <nav className="navbar navbar-light bg-faded m-b-md">
-            <span className="navbar-brand">edit hypothesis</span>
 
-            <div className="form-inline navbar-form pull-right">
-              <DeleteButton handleDelete={this.removeHypothesis}/>
-              <button onClick={this.props.toggleListView} className="btn btn-secondary-outline btn-sm">
-                close <i className="fa fa-times"></i>
-              </button>
-            </div>
-          </nav>
         <div className="row">
           <div className="col-md-12">
             <form>
@@ -71,9 +62,8 @@ EditHypothesis = React.createClass({
               </fieldset>
             </form>
           </div>
-        </div>
 
-        <br />
+        </div>
         <hr />
 
         {
@@ -81,10 +71,21 @@ EditHypothesis = React.createClass({
             return <EditTestCard key={testcard._id} testcard={testcard} learningcards={this.props.learningcards} />
           })
         }
+        <hr />
 
+
+                    <nav className="navbar ">
+                      <div className="form-inline navbar-form">
+                        <DeleteButton handleDelete={this.removeHypothesis}/>
+                      </div>
+                    </nav>
 
       </div>
 
     )
   }
 })
+
+// <button onClick={this.props.toggleListView} className="btn btn-secondary-outline btn-sm">
+//   close <i className="fa fa-times"></i>
+// </button>
