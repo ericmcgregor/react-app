@@ -8,32 +8,24 @@ GlobalNav = React.createClass({
     }
   },
 
-  toggleSideNav(){
-    // let sidenav = Session.get('sidenav');
-    // Session.set({
-    //   sidenav:!sidenav
-    // })
-    history.back()
+  handleBack(){
+    let route = Session.get('routeParent') ? Session.get('routeParent') : Session.get('lastRoute')
+    FlowRouter.go(route)
   },
   render() {
     return (
       <div id="global-nav-layout">
         <nav className="navbar  navbar-light bg-faded">
 
-          <span className="navbar-brand" onClick={this.toggleSideNav}>
+          <span className="navbar-brand" onClick={this.handleBack}>
             <button className="navbar-toggler" >
               <i className="fa fa-chevron-left" />
             </button>
             {this.data.navtitle}
           </span>
 
-          <ul className="nav navbar-nav pull-right">
-            <li className="nav-item">
-              <a href="" className="nav-link">
-                settings
-              </a>
-            </li>
-          </ul>
+          {this.props.options}
+
         </nav>
       </div>
     )

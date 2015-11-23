@@ -7,23 +7,29 @@ AppLayout = React.createClass({
       sidenav: Session.get('sidenav'),
     }
   },
-
+  test(){
+    alert('test')
+  },
+  options() {
+    return (
+      <li className="nav-item">
+        <a onClick={this.test} href="" className="nav-link">
+          test
+        </a>
+      </li>
+    )
+  },
   render(){
-    console.log(this.data.sidenav)
     return (
       <div id="app-container">
 
 
 
       <div id="app-content-layout">
-        {
-          this.data.sidenav ? <SideNav open={this.data.sidenav}/> : null
-        }
-
 
 
         <div id="main-content-layout">
-          <GlobalNav />
+          <GlobalNav options={this.props.options}/>
 
           <div className="scrollWrapper">
             {this.props.content}
@@ -31,6 +37,7 @@ AppLayout = React.createClass({
         </div>
 
         </div>
+
       </div>
     );
   }

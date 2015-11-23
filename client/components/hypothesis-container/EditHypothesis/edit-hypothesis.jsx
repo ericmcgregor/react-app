@@ -17,12 +17,7 @@ EditHypothesis = React.createClass({
       name:this.props.hypothesis.name
     }
   },
-  mixins: [
-    OnClickOutside
-  ],
-  handleClickOutside: function(evt) {
-    this.props.toggleListView();
-  },
+
   handleChange(key, value, evt) {
     let state = {}
     state[key] = value ? value : evt.target.value;
@@ -37,15 +32,13 @@ EditHypothesis = React.createClass({
       $set:state
     });
   },
-  removeHypothesis() {
-    Hypothesis.remove(this.props.hypothesis._id);
-  },
+
   render(){
     return(
       <div className="">
 
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-xs-12">
             <form>
               <fieldset className="form-group">
                 <label htmlFor="hypothesisName">
@@ -73,18 +66,22 @@ EditHypothesis = React.createClass({
         }
         <hr />
 
+          <button type="button" className="btn btn-primary btn-block">Save</button>
 
-                    <nav className="navbar ">
-                      <div className="form-inline navbar-form">
-                        <DeleteButton handleDelete={this.removeHypothesis}/>
-                      </div>
-                    </nav>
 
       </div>
 
     )
   }
 })
+// <button type="button" className="btn btn-danger btn-block" onClick={this.removeHypothesis}><i className="fa fa-trash-o"></i> Delete Hypothesis</button>
+
+
+                    // <nav className="navbar ">
+                    //   <div className="form-inline navbar-form">
+                    //     <DeleteButton handleDelete={this.removeHypothesis}/>
+                    //   </div>
+                    // </nav>
 
 // <button onClick={this.props.toggleListView} className="btn btn-secondary-outline btn-sm">
 //   close <i className="fa fa-times"></i>

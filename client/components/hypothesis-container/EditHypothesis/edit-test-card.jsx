@@ -30,7 +30,7 @@ EditTestCard = React.createClass({
     return (
       <div id="edit-test-card">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 col-xs-12">
             <form>
               <fieldset className="form-group">
                 <label htmlFor="testName">Test Name:</label>
@@ -49,7 +49,7 @@ EditTestCard = React.createClass({
         </div>
 
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 col-xs-12">
             <form>
               <fieldset className="form-group">
                 <label htmlFor="testDescription">
@@ -108,7 +108,7 @@ EditTestCard = React.createClass({
             </form>
 
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6  col-xs-12">
             {
               this.props.learningcards.map(function(learningcard){
                 return <EditLearningCard key={learningcard._id} learningcard={learningcard}/>

@@ -15,7 +15,10 @@ HypothesisDetailView = React.createClass({
     }
   },
   componentDidMount() {
-
+    Session.set({
+      navtitle:'Edit Hypothesis',
+      routeParent:'/projects/'+this.data.hypothesis.projectId
+    })
   },
   render() {
     console.log(this.data)
@@ -27,6 +30,7 @@ HypothesisDetailView = React.createClass({
         testcards={this.data.TestCards}
         learningcards={this.data.learningCard}
         />
+      <ModalContainer modalTitle="Hypothesis Options" modalBody={<HypothesisOptionsModal />}/>
       </div>
     );
   }

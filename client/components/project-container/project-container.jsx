@@ -17,26 +17,21 @@ ProjectContainer = React.createClass({
       }
     },
 
+    removeProject() {
+      FlowRouter.go('/projects');
 
+      Projects.remove(this.props.project._id, function(err, id){});
+    },
 
-  shouldRenderForm(location) {
-      if(this.data.hypothesis.length===0 && location==='body' ) {
-        return true;
-      }
-
-      if(this.data.hypothesis.length>0 && location==='nav') {
-        return true;
-      }
-
-      return false;
-  },
 
   render() {
     return (
     <div className="container-fluid project-container m-y">
 
       <HypothesisContainer hypothesis={this.data.hypothesis}/>
-        <ProjectHeader project={this.props.project} shouldRender={this.shouldRenderForm("nav")} />
+
+
+
 
     </div>
   )
@@ -46,7 +41,9 @@ ProjectContainer = React.createClass({
 });
 // <ProjectHeader project={this.props.project} shouldRender={this.shouldRenderForm("nav")} />
 
+// <ProjectHeader project={this.props.project} shouldRender={this.shouldRenderForm("nav")} />
 
+// <button type="button" className="btn btn-danger btn-block" onClick={this.removeProject}><i className="fa fa-trash-o"></i> Delete Project</button>
 
 
 // <div className="p-a">

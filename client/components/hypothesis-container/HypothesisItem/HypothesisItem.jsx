@@ -20,8 +20,21 @@ HypothesisItem = React.createClass({
       <div className="card" onClick={this.goDetail.bind(this, this.props.hypothesis)}>
         <div className="card-block">
           <h4 className="card-title">{this.props.hypothesis.name}</h4>
-          <p className="card-text">Test:  {this.data.TestCard.name}</p>
-          <p className="card-text">Results:  We observed that such and such is true</p>
+          {
+            this.data.TestCard.name ?
+            <p className="card-text">Test:  {this.data.TestCard.name}</p> :
+            null
+          }
+          {
+            this.data.learningCard.observation ?
+            <p className="card-text">Results:  {this.data.learningCard.observation}</p> :
+            null
+          }
+          {
+            this.data.learningCard.result ?
+            <p className="card-text"><span className="label label-default">{this.data.learningCard.result}</span></p> :
+            null
+          }
         </div>
       </div>
     )
