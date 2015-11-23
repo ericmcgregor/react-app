@@ -8,8 +8,6 @@ SettingsView = React.createClass({
     }
   },
   componentDidMount() {
-    console.log(Session.get('routeParent'))
-
     Session.set({
       navtitle:'Settings',
       routeParent:null

@@ -3,7 +3,7 @@ ModalContainer = React.createClass({
     return(
       <div
         className="modal fade"
-        id="myModal"
+        id={this.props.modalId}
         tabIndex={-1}
         role="dialog"
         aria-labelledby="myModalLabel"
@@ -24,7 +24,7 @@ ModalContainer = React.createClass({
               </h4>
             </div>
             {this.props.modalBody}
-  
+
           </div>
         </div>
       </div>

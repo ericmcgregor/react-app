@@ -9,8 +9,7 @@ GlobalNav = React.createClass({
   },
 
   handleBack(){
-    let route = Session.get('routeParent') ? Session.get('routeParent') : Session.get('lastRoute')
-    FlowRouter.go(route)
+    Meteor.call('navBack')
   },
   render() {
     return (

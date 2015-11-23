@@ -71,13 +71,9 @@ ProjectListView = React.createClass({
                 </div>
 
 
-                <hr></hr>
-                <a className="btn btn-primary btn-block" href="" data-toggle="modal" data-target="#myModal">
-                  Create Project
-                </a>
 
-
-                <ModalContainer modalTitle="Create Project" modalBody={<CreateProjectModal />}/>
+                <ModalContainer modalId="myModal" modalTitle="Create Project" modalBody={<CreateProjectModal />}/>
+                <ModalContainer modalId="settingsModal" modalTitle="Account Settings" modalBody={<SettingsView />}/>
 
 
               </div>
@@ -128,3 +124,12 @@ ProjectListView = React.createClass({
     )
   }
 })
+
+
+
+
+                //
+                // <hr></hr>
+                // <a className="btn btn-primary btn-block" href="" data-toggle="modal" data-target="#myModal">
+                //   Create Project
+                // </a>

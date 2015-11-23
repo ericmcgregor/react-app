@@ -3,9 +3,7 @@ HypothesisOptionsModal = React.createClass({
     // FlowRouter.go('/projects/'+this.props.hypothesis.projectId);
     // Hypothesis.remove(this.props.hypothesis._id);
     $('#myModal').on('hide.bs.modal', function (e) {
-      console.log(FlowRouter.getParam('projectId'))
-
-      FlowRouter.go('/projects/'+FlowRouter.getParam('projectId'));
+      Meteor.call('navBack')
     })
 
     Hypothesis.remove(FlowRouter.getParam('hypothesisId'));

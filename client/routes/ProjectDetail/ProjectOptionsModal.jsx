@@ -2,8 +2,13 @@
 
 ProjectOptionsModal = React.createClass({
   removeProject() {
-    FlowRouter.go('/projects');
-    Projects.remove(this.props.project._id, function(err, id){});
+    $('#myModal').on('hide.bs.modal', function (e) {
+      FlowRouter.go('/projects');
+    })
+    Projects.remove(FlowRouter.getParam('projectId'), function(err, id){});
+
+    $('#myModal').modal('toggle');
+
   },
   render(){
     return(

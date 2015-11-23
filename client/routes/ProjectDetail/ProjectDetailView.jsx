@@ -23,7 +23,7 @@ ProjectDetailView = React.createClass({
     return (
       <div>
       <ProjectContainer key={this.data.project._id} project={this.data.project} />
-      <ModalContainer modalTitle="Project Options" modalBody={<ProjectOptionsModal />}/>
+      <ModalContainer modalId="myModal" modalTitle="Project Options" modalBody={<ProjectOptionsModal />}/>
       </div>
     );
   }

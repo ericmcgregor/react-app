@@ -30,7 +30,7 @@ HypothesisDetailView = React.createClass({
         testcards={this.data.TestCards}
         learningcards={this.data.learningCard}
         />
-      <ModalContainer modalTitle="Hypothesis Options" modalBody={<HypothesisOptionsModal />}/>
+      <ModalContainer modalId="myModal" modalTitle="Hypothesis Options" modalBody={<HypothesisOptionsModal />}/>
       </div>
     );
   }

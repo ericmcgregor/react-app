@@ -32,7 +32,9 @@ EditHypothesis = React.createClass({
       $set:state
     });
   },
-
+  handleSave(){
+    Meteor.call('navBack')
+  },
   render(){
     return(
       <div className="">
@@ -66,7 +68,7 @@ EditHypothesis = React.createClass({
         }
         <hr />
 
-          <button type="button" className="btn btn-primary btn-block">Save</button>
+          <button type="button" className="btn btn-primary btn-block" onClick={this.handleSave}>Save</button>
 
 
       </div>

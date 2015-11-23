@@ -22,7 +22,6 @@ function loginRedirect(context, redirect) {
 }
 
 function setRouteHistory(context) {
-    console.log(context)
     Session.set({'lastRoute':context.path})
 }
 FlowRouter.triggers.enter([loginRedirect]);
@@ -47,40 +46,15 @@ FlowRouter.route('/settings', {
   }
 });
 
-
-let projectRoutes = FlowRouter.group({
+projectRoutes = FlowRouter.group({
   name: 'projects',
   prefix: "/projects"
 });
 
-projectRoutes.route('/', {
-  name:'projects-list',
-  action:function(){
-    ReactLayout.render(AppLayout, {content:<ProjectListView />, options:<ProjectNavOptions />})
-  },
-  triggersEnter:[function(){
-    Session.set({'navtitle':'Projects'})
-  }]
-})
+
 projectRoutes.route('/new-project', {
   name:'new-project',
   action(params) {
     ReactLayout.render(AppLayout, {content: <NewProjectView />})
   }
 });
-
-
-
-
-FlowRouter.route('/projects/:projectId', {
-  name:'project-details',
-  action:function(params){
-    ReactLayout.render(AppLayout, {content: <ProjectDetailView projectId={params.projectId}/>, options:<ProjectDetailNavOptions />})
-  }
-})
-FlowRouter.route('/projects/:projectId/:hypothesisId', {
-  name:'project-details-hypothesis',
-  action:function(params){
-    ReactLayout.render(AppLayout, {content: <HypothesisDetailView hypothesisId={params.hypothesisId}/>, options:<HypothesisDetailNavOptions />})
-  }
-})
